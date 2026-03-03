@@ -3,10 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --beige: #f6f4ee;
+  --green: #233a2f;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+.serif {
+  font-family: var(--font-playfair);
 }
