@@ -2,6 +2,7 @@ import { LucideIcon } from "lucide-react";
 
 const variants = {
   hero: "bg-(--beige) text-(--green)",
+  default: "bg-(--green) text-(--beige)",
 };
 type Variants = keyof typeof variants;
 
