@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 const activities = [
   { title: "Boat Trip with Pole", description: "Dance above the Atlantic" },
@@ -28,7 +29,7 @@ function SectionHeader() {
   return (
     <div className="flex items-end justify-between">
       <div className="w-2/5 flex flex-col gap-6">
-        <SectionTag label="Activities" />
+        <SectionBadge label="Activities" />
         <h2 className="mt-12 serif font-bold text-6xl text-(--blue) leading-[1.05] tracking-tighter">
           Explore the Activities of the Retreat
         </h2>
@@ -42,16 +43,6 @@ function SectionHeader() {
         </p>
         <Button text="Book Retreat" icon={ArrowRight} variant="default" />
       </div>
-    </div>
-  );
-}
-
-function SectionTag({ label }: { label: string }) {
-  return (
-    <div className="inline-flex items-center gap-2 shadow rounded-full px-4 py-1.5 self-start">
-      <span className="w-1.5 h-1.5 rounded-full bg-(--green)" />
-      <span className="text-xs uppercase tracking-widest text-(--green)">{label}</span>
-      <span className="w-1.5 h-1.5 rounded-full bg-(--green)" />
     </div>
   );
 }
