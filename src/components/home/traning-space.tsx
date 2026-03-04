@@ -1,5 +1,6 @@
 import { MapPin, ShieldCheck, Sparkles } from "lucide-react";
 import { LucideIcon } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 const highlights = [
   {
@@ -33,7 +34,7 @@ export function TrainingSpace() {
 function SectionIntro() {
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <SectionTag label="Training Space" />
+      <SectionBadge label="Training Space" />
       <h2 className="serif font-bold text-6xl text-(--green) leading-[1.05] tracking-tighter">
         Where You&apos;ll Train
       </h2>
@@ -104,16 +105,6 @@ function PhotoGallery() {
           <img src={src} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover" />
         </div>
       ))}
-    </div>
-  );
-}
-
-function SectionTag({ label }: { label: string }) {
-  return (
-    <div className="bg-white inline-flex items-center gap-2 shadow rounded-full px-4 py-1.5">
-      <span className="w-1.5 h-1.5 rounded-full bg-(--green)" />
-      <span className="text-xs uppercase tracking-widest text-(--green)">{label}</span>
-      <span className="w-1.5 h-1.5 rounded-full bg-(--green)" />
     </div>
   );
 }
