@@ -6,6 +6,7 @@
 
   --beige: #f6f4ee;
   --green: #233a2f;
+  --blue: #272c35;
 }
 
 body {
@@ -16,4 +17,8 @@ body {
 
 .serif {
   font-family: var(--font-playfair);
+}
+
+.heading {
+  font-family: var(--font-bebas);
 }
