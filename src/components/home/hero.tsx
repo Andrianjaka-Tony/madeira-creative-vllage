@@ -12,17 +12,23 @@ export function Hero() {
   ];
 
   return (
-    <div className="relative w-screen h-screen flex flex-col items-center justify-center">
+    <div className="relative w-screen h-[80vh] flex flex-col items-center justify-center">
       <img
         src="/images/hero.png"
         className="absolute h-full w-full bg-black/80 -z-2 object-cover"
       />
       <div className="absolute inset-0 -z-1 bg-black/60"></div>
 
-      <h1 className="mt-[35vh] w-2/5 text-7xl text-(--beige) text-center font-bold serif tracking-tighter leading-[1.1]">
+      <h1 className="mt-[28vh] w-2/5 text-7xl text-(--beige) text-center font-bold serif tracking-tighter leading-[1.1]">
         Pole Dance Retreat in Madeira Island
       </h1>
-      <Button text="Book My Spot" icon={ArrowUpRight} className="px-10 mt-10" variant="hero" />
+      <Button
+        text="Book My Spot"
+        icon={ArrowUpRight}
+        className="px-10 mt-10"
+        variant="hero"
+        href="https://forms.gle/RKq6z77pzecVbxxT9"
+      />
 
       <div className="px-10 mb-12 mt-auto w-4/5 bg-(--green)/70 rounded-2xl border border-white/10 grid grid-cols-6 divide-x divide-white/20">
         {infos.map((info, key) => (
