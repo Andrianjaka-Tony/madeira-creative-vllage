@@ -11,7 +11,7 @@ const activities = [
 
 export function ExploreSection() {
   return (
-    <section className="px-32 py-24">
+    <section className="px-20 xl:px-32 py-24">
       <SectionHeader />
       <div className="grid grid-cols-4 gap-4 mt-12">
         {activities.map((a) => (
