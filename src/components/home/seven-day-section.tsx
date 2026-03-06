@@ -1,5 +1,8 @@
+"use client";
+
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play, Volume2, VolumeX } from "lucide-react";
 
 const features = [
   { title: "Daily Pole Workshops", description: "Mixed groups" },
@@ -10,7 +13,7 @@ const features = [
 
 export function SevenDaySection() {
   return (
-    <section className="bg-(--beige) flex justify-between items-center gap-16 px-32 py-24">
+    <section className="bg-(--beige) flex justify-between items-center gap-8 xl:gap-16 px-20 xl:px-32 py-24">
       <div className="w-1/2 flex flex-col">
         <p className="text-xs uppercase tracking-widest text-(--green)/50 mb-2">
           Madeira, Portugal · Lyrical Pole Dancing
@@ -30,6 +33,7 @@ export function SevenDaySection() {
           icon={ArrowRight}
           variant="default"
           className="self-start px-8"
+          href="https://forms.gle/RKq6z77pzecVbxxT9"
         />
       </div>
       <SideImage />
@@ -85,17 +89,99 @@ function FeatureCard({ title, description }: FeatureCardProps) {
 }
 
 function SideImage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const onTimeUpdate = () => setProgress((video.currentTime / video.duration) * 100);
+    video.addEventListener("timeupdate", onTimeUpdate);
+    return () => video.removeEventListener("timeupdate", onTimeUpdate);
+  }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (playing) { video.pause(); } else { video.play(); }
+    setPlaying(!playing);
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setMuted(video.muted);
+  };
+
+  const seek = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    const bar = progressRef.current;
+    if (!video || !bar) return;
+    const rect = bar.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    video.currentTime = ratio * video.duration;
+  };
+
   return (
-    <div className="relative flex-none w-125 aspect-3/4 rounded-3xl overflow-hidden">
-      <img
-        src="/images/hero.png"
-        alt="Training in paradise"
+    <div
+      className="relative flex-none w-96 xl:w-125 aspect-3/4 rounded-3xl overflow-hidden cursor-pointer group"
+      onClick={togglePlay}
+    >
+      <video
+        ref={videoRef}
+        src="/images/7-days-video.mov"
+        poster="/images/7-days-cover.JPG"
         className="absolute inset-0 w-full h-full object-cover"
+        playsInline
+        muted
+        loop
       />
       <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
-      <p className="absolute bottom-6 left-0 right-0 text-center text-white/80 text-sm italic">
-        Feel what training in paradise is like.
-      </p>
+
+      {/* Play/Pause button */}
+      {!playing && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+            <Play size={24} className="text-white ml-1" />
+          </div>
+        </div>
+      )}
+
+      {/* Controls bottom */}
+      <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-3">
+        {playing && (
+          <>
+            {/* Progress bar */}
+            <div
+              ref={progressRef}
+              onClick={seek}
+              className="w-full h-1 bg-white/30 rounded-full cursor-pointer"
+            >
+              <div
+                className="h-full bg-white rounded-full transition-all duration-100"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </>
+        )}
+        <div className="flex items-center justify-between">
+          <p className="text-white/80 text-sm italic">Feel what training in paradise is like.</p>
+          {playing && (
+            <button
+              onClick={toggleMute}
+              className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors flex-shrink-0"
+            >
+              {muted ? <VolumeX size={16} className="text-white" /> : <Volume2 size={16} className="text-white" />}
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
