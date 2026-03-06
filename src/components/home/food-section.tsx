@@ -21,7 +21,7 @@ const gridImages = [
 
 export function FoodSection() {
   return (
-    <section className="bg-white flex items-start gap-7.5 px-44 py-24">
+    <section className="bg-white flex items-start gap-7.5 px-20 xl:px-44 py-24">
       <div className="w-1/2 flex flex-col">
         <SectionBadge label="Food" />
         <h2 className="mt-6 serif font-bold text-6xl text-(--green) leading-[1.05] tracking-tighter mb-6">
@@ -68,7 +68,7 @@ export function FoodSection() {
         className="w-1/2"
         style={{
           display: "grid",
-          gridTemplateColumns: "324px 271px",
+          gridTemplateColumns: "minmax(0, 324px) minmax(0, 271px)",
           gridTemplateRows: "350px 206px 225px",
           gap: "24px",
         }}

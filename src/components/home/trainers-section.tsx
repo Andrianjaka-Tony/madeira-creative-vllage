@@ -54,7 +54,7 @@ function ImageSlider() {
   }, [current]);
 
   return (
-    <div className="relative flex-none rounded-3xl overflow-hidden" style={{ width: 375, height: 605 }}>
+    <div className="relative flex-none w-[280px] xl:w-[375px] rounded-3xl overflow-hidden" style={{ height: 605 }}>
       {slides.map((src, i) => (
         <img
           key={i}
@@ -107,7 +107,7 @@ function TrainerColumn({ trainer }: { trainer: Trainer }) {
 
 export function TrainersSection() {
   return (
-    <section className="bg-(--beige) py-24 flex flex-col gap-14" style={{ paddingLeft: 140, paddingRight: 140 }}>
+    <section className="bg-(--beige) py-24 px-20 xl:px-[140px] flex flex-col gap-14">
       {/* Header */}
       <div className="flex flex-col items-center gap-3 text-center">
         <h2 className="serif font-bold text-6xl text-(--green) leading-[1.05] tracking-tighter">

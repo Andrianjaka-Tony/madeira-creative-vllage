@@ -7,7 +7,12 @@ import { FoodSection } from "@/components/home/food-section";
 import { LocationSection } from "@/components/home/location-section";
 import { CharmSection } from "@/components/home/charm-section";
 import { TrainersSection } from "@/components/home/trainers-section";
+import { LineUpSection } from "@/components/home/line-up-section";
 import { TravelSection } from "@/components/home/travel-section";
+import Footer from "@/layout/footer";
+import Testimonials from "@/components/home/testimonials-section";
+import { FaqSection } from "@/components/home/faq-section";
+import { BookSpotSection } from "@/components/home/book-spot-section";
 
 export function HomeView() {
   return (
@@ -19,8 +24,13 @@ export function HomeView() {
       <FoodSection />
       <LocationSection />
       <CharmSection />
+      <LineUpSection />
       <TrainersSection />
       <TravelSection />
+      <Testimonials />
+      <BookSpotSection />
+      <FaqSection />
+      <Footer />
     </Fragment>
   );
 }

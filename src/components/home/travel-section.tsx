@@ -14,7 +14,7 @@ const gridImages = [
 
 export function TravelSection() {
   return (
-    <section className="bg-white py-24 flex gap-20" style={{ paddingLeft: 176, paddingRight: 176 }}>
+    <section className="bg-white py-24 px-20 xl:px-44 flex gap-20">
       {/* Left 2/3 */}
       <div className="flex flex-col gap-6" style={{ flex: "0 0 calc(66.666% - 40px)" }}>
         <h2 className="serif font-bold text-4xl text-(--green) leading-[1.05] tracking-tighter">

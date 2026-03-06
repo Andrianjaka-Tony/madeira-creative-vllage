@@ -2,9 +2,9 @@ import { SectionBadge } from "@/components/ui/section-badge";
 
 export function LocationSection() {
   return (
-    <section className="bg-(--beige) flex items-center gap-7.5 px-44 py-24">
-      {/* Image gauche : 619 x 512 */}
-      <div className="flex-none rounded-3xl overflow-hidden" style={{ width: 619, height: 512 }}>
+    <section className="bg-(--beige) flex items-center gap-7.5 px-20 xl:px-44 py-24">
+      {/* Image gauche */}
+      <div className="flex-none w-[45%] rounded-3xl overflow-hidden" style={{ height: 512 }}>
         <img
           src="/images/hero.png"
           alt="Ponta do Sol, Madeira"

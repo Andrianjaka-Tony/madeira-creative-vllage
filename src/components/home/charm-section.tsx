@@ -41,7 +41,7 @@ function CharmFeature({ title, paragraphs, images, reverse = false }: CharmFeatu
 
 export function CharmSection() {
   return (
-    <section className="bg-white px-44 py-24 flex flex-col gap-16">
+    <section className="bg-white px-20 xl:px-44 py-24 flex flex-col gap-16">
       {/* Header */}
       <div className="flex flex-col items-center gap-4 text-center">
         <SectionBadge className="mx-auto" label="Villa" />
