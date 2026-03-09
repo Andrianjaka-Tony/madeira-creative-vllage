@@ -12,11 +12,11 @@ const buffetItems = [
 ];
 
 const gridImages = [
-  { alt: "Dinner table with guests" },
-  { alt: "Outdoor picnic setup" },
-  { alt: "Buffet spread" },
-  { alt: "Community dinner" },
-  { alt: "Honesty bar" },
+  { src: "/images/meal/meal-1.jpg", alt: "Dinner table with guests" },
+  { src: "/images/meal/meal-2.jpg", alt: "Outdoor picnic setup" },
+  { src: "/images/meal/meal-3.jpg", alt: "Buffet spread" },
+  { src: "/images/meal/meal-4.jpg", alt: "Community dinner" },
+  { src: "/images/meal/meal-5.png", alt: "Honesty bar" },
 ];
 
 export function FoodSection() {
@@ -75,23 +75,23 @@ export function FoodSection() {
       >
         {/* Image 1 : C1-C2, L1-L2 */}
         <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "1", gridRow: "1 / 3" }}>
-          <img src="/images/hero.png" alt={gridImages[0].alt} className="w-full h-full object-cover" />
+          <img src={gridImages[0].src} alt={gridImages[0].alt} className="w-full h-full object-cover" />
         </div>
         {/* Image 2 : C3, L1 */}
         <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "2", gridRow: "1" }}>
-          <img src="/images/hero.png" alt={gridImages[1].alt} className="w-full h-full object-cover" />
+          <img src={gridImages[1].src} alt={gridImages[1].alt} className="w-full h-full object-cover" />
         </div>
         {/* Image 3 : C3, L2 */}
         <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "2", gridRow: "2" }}>
-          <img src="/images/hero.png" alt={gridImages[2].alt} className="w-full h-full object-cover" />
+          <img src={gridImages[2].src} alt={gridImages[2].alt} className="w-full h-full object-cover" />
         </div>
         {/* Image 4 : C1-C2, L3 */}
         <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "1", gridRow: "3" }}>
-          <img src="/images/hero.png" alt={gridImages[3].alt} className="w-full h-full object-cover" />
+          <img src={gridImages[3].src} alt={gridImages[3].alt} className="w-full h-full object-cover" />
         </div>
         {/* Image 5 : C3, L3 */}
         <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "2", gridRow: "3" }}>
-          <img src="/images/hero.png" alt={gridImages[4].alt} className="w-full h-full object-cover" />
+          <img src={gridImages[4].src} alt={gridImages[4].alt} className="w-full h-full object-cover" />
         </div>
       </div>
     </section>
