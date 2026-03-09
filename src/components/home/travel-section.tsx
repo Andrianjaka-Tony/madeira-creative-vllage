@@ -6,10 +6,10 @@ const notIncluded = [
 ];
 
 const gridImages = [
-  "Women by the pool",
-  "Villa exterior",
-  "Aerial villa view",
-  "Madeira coastline",
+  { src: "/images/travel/travel-1.jpeg", alt: "Women by the pool" },
+  { src: "/images/travel/travel-2.jpg", alt: "Villa exterior" },
+  { src: "/images/travel/travel-3.jpg", alt: "Aerial villa view" },
+  { src: "/images/stay/stay-2.png", alt: "Madeira coastline" },
 ];
 
 export function TravelSection() {
@@ -76,11 +76,11 @@ export function TravelSection() {
 
         {/* 2×2 image grid */}
         <div className="grid grid-cols-2 gap-3">
-          {gridImages.map((alt) => (
-            <div key={alt} className="rounded-2xl overflow-hidden" style={{ height: 140 }}>
+          {gridImages.map((img) => (
+            <div key={img.alt} className="rounded-2xl overflow-hidden" style={{ height: 140 }}>
               <img
-                src="/images/hero.png"
-                alt={alt}
+                src={img.src}
+                alt={img.alt}
                 className="w-full h-full object-cover"
               />
             </div>
