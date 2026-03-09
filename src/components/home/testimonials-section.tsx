@@ -5,27 +5,27 @@ import Tagline from "@/components/home/tagline";
 const testimonials = [
   {
     id: 1,
-    image: "/images/testimonial-1.jpg",
+    image: "/images/testimonial/testimonial-1.jpg",
     gridArea: "a",
     link: "https://www.instagram.com/reel/DJpakBmuurC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   }, // Tall left (2x2)
   {
     id: 2,
-    image: "/images/testimonial-2.jpg",
+    image: "/images/testimonial/testimonial-2.jpg",
     gridArea: "b",
     link: "https://www.instagram.com/reel/DJ8stC9IdML/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     objectPosition: "center top",
   }, // Small top
-  { id: 3, image: "/images/testimonial-3.jpeg", gridArea: "c", link: "" }, // Wide top (2 cols)
-  { id: 4, image: "/images/testimonial-4.jpg", gridArea: "d", link: "" }, // Medium top right
-  { id: 5, image: "/images/testimonial-5.jpeg", gridArea: "e", link: "" }, // Wide bottom (2 cols)
+  { id: 3, image: "/images/testimonial/testimonial-3.jpeg", gridArea: "c", link: "" }, // Wide top (2 cols)
+  { id: 4, image: "/images/testimonial/testimonial-4.jpg", gridArea: "d", link: "" }, // Medium top right
+  { id: 5, image: "/images/testimonial/testimonial-5.jpeg", gridArea: "e", link: "" }, // Wide bottom (2 cols)
   {
     id: 6,
-    image: "/images/testimonial-6.png",
+    image: "/images/testimonial/testimonial-6.png",
     gridArea: "f",
     link: "https://www.instagram.com/reel/DALuABzo-dv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   }, // Small bottom
-  { id: 7, image: "/images/testimonial-7.png", gridArea: "g", link: "" }, // Medium bottom right
+  { id: 7, image: "/images/testimonial/testimonial-7.png", gridArea: "g", link: "" }, // Medium bottom right
 ];
 
 interface TestimonialCardProps {
@@ -107,7 +107,7 @@ export default function Testimonials({
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full overflow-hidden relative flex-shrink-0 bg-gray-600">
                   <Image
-                    src="/images/testimonial-1.jpg"
+                    src="/images/testimonial/testimonial-1.jpg"
                     alt="Ana G."
                     fill
                     className="object-cover"

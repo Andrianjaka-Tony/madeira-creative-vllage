@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
+import { VideoModal } from "@/components/ui/video-modal";
 
 const features = [
   { title: "Daily Pole Workshops", description: "Mixed groups" },
@@ -89,99 +90,39 @@ function FeatureCard({ title, description }: FeatureCardProps) {
 }
 
 function SideImage() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const progressRef = useRef<HTMLDivElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const onTimeUpdate = () => setProgress((video.currentTime / video.duration) * 100);
-    video.addEventListener("timeupdate", onTimeUpdate);
-    return () => video.removeEventListener("timeupdate", onTimeUpdate);
-  }, []);
-
-  const togglePlay = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (playing) { video.pause(); } else { video.play(); }
-    setPlaying(!playing);
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !video.muted;
-    setMuted(video.muted);
-  };
-
-  const seek = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-    const video = videoRef.current;
-    const bar = progressRef.current;
-    if (!video || !bar) return;
-    const rect = bar.getBoundingClientRect();
-    const ratio = (e.clientX - rect.left) / rect.width;
-    video.currentTime = ratio * video.duration;
-  };
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div
-      className="relative flex-none w-96 xl:w-125 aspect-3/4 rounded-3xl overflow-hidden cursor-pointer group"
-      onClick={togglePlay}
-    >
-      <video
-        ref={videoRef}
-        src="/images/7-days-video.mov"
-        poster="/images/7-days-cover.JPG"
-        className="absolute inset-0 w-full h-full object-cover"
-        playsInline
-        muted
-        loop
-      />
-      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+    <>
+      {modalOpen && (
+        <VideoModal
+          src="/images/7-days-video.mov"
+          onClose={() => setModalOpen(false)}
+        />
+      )}
+      <div
+        className="relative flex-none w-96 xl:w-125 aspect-3/4 rounded-3xl overflow-hidden cursor-pointer group"
+        onClick={() => setModalOpen(true)}
+      >
+        <img
+          src="/images/7-days-cover.JPG"
+          alt="7-day retreat preview"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
 
-      {/* Play/Pause button */}
-      {!playing && (
+        {/* Play button */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
             <Play size={24} className="text-white ml-1" />
           </div>
         </div>
-      )}
 
-      {/* Controls bottom */}
-      <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-3">
-        {playing && (
-          <>
-            {/* Progress bar */}
-            <div
-              ref={progressRef}
-              onClick={seek}
-              className="w-full h-1 bg-white/30 rounded-full cursor-pointer"
-            >
-              <div
-                className="h-full bg-white rounded-full transition-all duration-100"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          </>
-        )}
-        <div className="flex items-center justify-between">
+        {/* Bottom label */}
+        <div className="absolute bottom-0 left-0 right-0 p-5">
           <p className="text-white/80 text-sm italic">Feel what training in paradise is like.</p>
-          {playing && (
-            <button
-              onClick={toggleMute}
-              className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors flex-shrink-0"
-            >
-              {muted ? <VolumeX size={16} className="text-white" /> : <Volume2 size={16} className="text-white" />}
-            </button>
-          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -22,3 +22,11 @@ body {
 .heading {
   font-family: var(--font-bebas);
 }
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

@@ -19,7 +19,11 @@ const highlights = [
   },
 ];
 
-const galleryImages = ["/images/hero.png", "/images/hero.png", "/images/hero.png"];
+const galleryImages = [
+  "/images/training/training-2.jpg",
+  "/images/training/training-3.jpg",
+  "/images/training/training-4.jpg",
+];
 
 export function TrainingSpace() {
   return (
@@ -50,7 +54,11 @@ function TrainingBlock() {
   return (
     <div className="mt-16 flex gap-12 items-start">
       <div className="flex-none w-[45%] aspect-12/10 rounded-3xl overflow-hidden">
-        <img src="/images/hero.png" alt="Training villa" className="w-full h-full object-cover" />
+        <img
+          src="/images/training/training-1.jpg"
+          alt="Training villa"
+          className="w-full h-full object-cover"
+        />
       </div>
       <div className="flex flex-col gap-6 pt-2">
         <h3 className="serif font-bold text-3xl text-(--blue) leading-tight">

@@ -1,22 +1,130 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { SectionBadge } from "@/components/ui/section-badge";
+"use client";
 
-const activities = [
-  { title: "Boat Trip with Pole", description: "Dance above the Atlantic" },
-  { title: "Black Sand Beach Photoshoot", description: "Professional shoot at the beach" },
-  { title: "Tea Ceremony", description: "Mindfulness & island culture" },
-  { title: "Fanal Forest Hike", description: "Enchanted laurisilva forest" },
+import { useState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
+import { VideoModal } from "@/components/ui/video-modal";
+
+type AssetType = "video" | "image";
+type Asset = { source: string; type: AssetType };
+
+const SLIDE_INTERVAL = 3500;
+
+const activities: { title: string; description: string; assets: Asset[] }[] = [
+  {
+    title: "Boat Trip with Pole",
+    description: "Dance above the Atlantic",
+    assets: [
+      { source: "/images/explore/explore-1-1.jpg", type: "image" },
+      { source: "/images/explore/explore-1-2.mov", type: "video" },
+      { source: "/images/explore/explore-1-3.jpg", type: "image" },
+    ],
+  },
+  {
+    title: "Black Sand Beach Photoshoot",
+    description: "Professional shoot at the beach",
+    assets: [
+      { source: "/images/explore/explore-2-1.jpg", type: "image" },
+      { source: "/images/explore/explore-2-2.mov", type: "video" },
+      { source: "/images/explore/explore-2-3.jpg", type: "image" },
+    ],
+  },
+  {
+    title: "Pole Violin Performance",
+    description: "Live music meets aerial art",
+    assets: [{ source: "/images/explore/explore-8-1.mp4", type: "video" }],
+  },
+  {
+    title: "Tea Ceremony",
+    description: "Mindfulness & island culture",
+    assets: [{ source: "/images/explore/explore-3-1.mp4", type: "video" }],
+  },
+  {
+    title: "Fanal Forest Hike",
+    description: "Enchanted laurisilva forest",
+    assets: [
+      { source: "/images/explore/explore-4-1.png", type: "image" },
+      { source: "/images/explore/explore-4-2.jpg", type: "image" },
+      { source: "/images/explore/explore-4-3.png", type: "image" },
+    ],
+  },
+  {
+    title: "Pico do Arieiro Hike",
+    description: "Above the clouds at 1818m",
+    assets: [{ source: "/images/explore/explore-5-1.mov", type: "video" }],
+  },
+  {
+    title: "Photoshoot in the Villa",
+    description: "Capture memories at the manor",
+    assets: [
+      { source: "/images/explore/explore-6-1.jpg", type: "image" },
+      { source: "/images/explore/explore-6-2.jpg", type: "image" },
+    ],
+  },
+  {
+    title: "Social Community Dinner",
+    description: "Share a meal, make connections",
+    assets: [{ source: "/images/explore/explore-7-1.jpg", type: "image" }],
+  },
 ];
 
 export function ExploreSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateArrows = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    updateArrows();
+    el.addEventListener("scroll", updateArrows);
+    return () => el.removeEventListener("scroll", updateArrows);
+  }, []);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = el.clientWidth / 2;
+    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+  };
+
   return (
     <section className="px-20 xl:px-32 py-24">
       <SectionHeader />
-      <div className="grid grid-cols-4 gap-4 mt-12">
-        {activities.map((a) => (
-          <ActivityCard key={a.title} {...a} />
-        ))}
+      <div className="relative mt-12">
+        {/* Left arrow */}
+        <button
+          onClick={() => scroll("left")}
+          className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm transition-opacity duration-200 cursor-pointer"
+          style={{ opacity: canScrollLeft ? 1 : 0, pointerEvents: canScrollLeft ? "auto" : "none" }}
+        >
+          <ChevronLeft size={18} className="text-(--blue)" />
+        </button>
+
+        {/* Right arrow */}
+        <button
+          onClick={() => scroll("right")}
+          className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm transition-opacity duration-200 cursor-pointer"
+          style={{ opacity: canScrollRight ? 1 : 0, pointerEvents: canScrollRight ? "auto" : "none" }}
+        >
+          <ChevronRight size={18} className="text-(--blue)" />
+        </button>
+
+        <div ref={scrollRef} className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+          {activities.map((a) => (
+            <div key={a.title} className="flex-none w-[calc((100%-48px)/4)]">
+              <ActivityCard {...a} />
+            </div>
+          ))}
+        </div>
       </div>
       <p className="text-center text-sm text-(--green)/50 mt-12">
         No other pole retreat in Europe combines all of this.
@@ -34,33 +142,146 @@ function SectionHeader() {
           Explore the Activities of the Retreat
         </h2>
       </div>
-      <div className="w-2/5 flex flex-col items-start gap-6 mt-auto">
+      <div className="w-2/5 flex flex-col justify-between gap-6 mt-auto">
         <p className="text-sm text-(--blue)/80 leading-relaxed">
           The retreat includes several activities centred around pole dancing, as well as island
           exploration — a boat trip with a hanging pole, a photoshoot on a black sand beach, and
           many other exciting experiences. A unique all-in-one event that blends adventure and
           creativity.
         </p>
-        <Button text="Book Retreat" icon={ArrowRight} variant="default" />
+        <Button
+          text="Book Retreat"
+          icon={ArrowRight}
+          variant="default"
+          href="https://forms.gle/RKq6z77pzecVbxxT9"
+          className="w-fit"
+        />
       </div>
     </div>
   );
 }
 
-type ActivityCardProps = { title: string; description: string };
-function ActivityCard({ title, description }: ActivityCardProps) {
+type ActivityCardProps = { title: string; description: string; assets: Asset[] };
+
+function ActivityCard({ title, description, assets }: ActivityCardProps) {
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [modalSrc, setModalSrc] = useState<string | null>(null);
+  const [videoTime, setVideoTime] = useState(0);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const interactedRef = useRef(false);
+
+  const goTo = (index: number) => {
+    if (index === current || animating) return;
+    setAnimating(true);
+    setCurrent(index);
+    setTimeout(() => setAnimating(false), 400);
+  };
+
+  const prev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    interactedRef.current = true;
+    goTo((current - 1 + assets.length) % assets.length);
+  };
+
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    interactedRef.current = true;
+    goTo((current + 1) % assets.length);
+  };
+
+  const openModal = (e: React.MouseEvent, src: string) => {
+    e.stopPropagation();
+    interactedRef.current = true;
+    setModalSrc(src);
+  };
+
+  const closeModal = (currentTime: number) => {
+    setVideoTime(currentTime);
+    setModalSrc(null);
+  };
+
+  useEffect(() => {
+    if (assets.length <= 1) return;
+    if (interactedRef.current) return;
+    timeoutRef.current = setTimeout(() => {
+      goTo((current + 1) % assets.length);
+    }, SLIDE_INTERVAL);
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [current]);
+
+  const asset = assets[current];
+
   return (
-    <div className="relative aspect-3/4 rounded-3xl overflow-hidden">
-      <img
-        src="/images/hero.png"
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
-      <div className="absolute bottom-8 left-8 right-8">
-        <p className="serif text-white text-xl leading-tight">{title}</p>
-        <p className="text-white/60 text-xs mt-2">{description}</p>
+    <>
+      {modalSrc && <VideoModal src={modalSrc} startTime={videoTime} onClose={closeModal} />}
+      <div className="relative aspect-3/4 rounded-3xl overflow-hidden group">
+        {/* Assets */}
+        {assets.map((a, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 transition-opacity duration-400"
+            style={{ opacity: i === current ? 1 : 0 }}
+          >
+            {a.type === "image" ? (
+              <img src={a.source} alt={title} className="w-full h-full object-cover" />
+            ) : (
+              <video src={a.source} className="w-full h-full object-cover" playsInline muted loop />
+            )}
+          </div>
+        ))}
+
+        {/* Gradient */}
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+
+        {/* Left zone — previous */}
+        <div onClick={prev} className="absolute top-0 left-0 w-1/3 h-full z-10 cursor-pointer" />
+
+        {/* Right zone — next */}
+        <div onClick={next} className="absolute top-0 right-0 w-1/3 h-full z-10 cursor-pointer" />
+
+        {/* Video play button — opens modal */}
+        {asset.type === "video" && (
+          <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+            <div
+              onClick={(e) => openModal(e, asset.source)}
+              className="w-12 h-12 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center pointer-events-auto cursor-pointer hover:bg-white/35 transition-colors"
+            >
+              <Play size={18} className="text-white ml-0.5" />
+            </div>
+          </div>
+        )}
+
+        {/* Bottom: title, description + dots */}
+        <div className="absolute bottom-0 left-0 right-0 px-6 pb-5 z-20 pointer-events-none">
+          <p className="serif text-white text-xl leading-tight mb-2">{title}</p>
+          <div className="flex items-end justify-between gap-2">
+            <p className="text-white/60 text-xs">{description}</p>
+            {assets.length > 1 && (
+              <div className="-translate-y-1 flex items-center gap-1.5 shrink-0 pointer-events-auto">
+                {assets.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      interactedRef.current = true;
+                      goTo(i);
+                    }}
+                    className="rounded-full transition-all duration-300 cursor-pointer"
+                    style={{
+                      width: i === current ? 24 : 8,
+                      height: 8,
+                      background: i === current ? "white" : "rgba(255,255,255,0.5)",
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
