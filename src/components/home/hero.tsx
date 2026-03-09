@@ -13,10 +13,16 @@ export function Hero() {
 
   return (
     <div className="relative w-screen h-[80vh] flex flex-col items-center justify-center">
-      <img
-        src="/images/hero.png"
-        className="absolute h-full w-full bg-black/80 -z-2 object-cover"
-      />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/images/coverImg.jpg"
+        className="absolute h-full w-full -z-2 object-cover"
+      >
+        <source src="/trimmed.mov" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 -z-1 bg-black/60"></div>
 
       <h1 className="mt-[28vh] w-2/5 text-7xl text-(--beige) text-center font-bold serif tracking-tighter leading-[1.1]">
