@@ -17,7 +17,8 @@ const lineup: Day[] = [
       {
         time: "CHECK-IN",
         title: "Check-in from 2pm",
-        description: "Arrival + Welcome Brief. If your flight is earlier, you can relax at the villa.",
+        description:
+          "Arrival + Welcome Brief. If your flight is earlier, you can relax at the villa.",
       },
       {
         time: "AFTERNOON",
@@ -93,7 +94,8 @@ const lineup: Day[] = [
       {
         time: "EVENING",
         title: "Sunset Boat Trip with Hanging Pole",
-        description: "For the second group. Dinner in Funchal / Relaxing in the villa and free time for the first group.",
+        description:
+          "For the second group. Dinner in Funchal / Relaxing in the villa and free time for the first group.",
       },
     ],
   },
@@ -157,7 +159,7 @@ const lineup: Day[] = [
 
 const ScheduleRow = ({ item }: { item: ScheduleItem }) => (
   <div className="flex gap-4 py-4">
-    <span className="text-[#888] text-[14px] w-12 flex-shrink-0 pt-0.5">{item.time}</span>
+    <span className="text-[#888] text-[14px] w-24 flex-shrink-0 pt-0.5">{item.time}</span>
     <div className="w-px bg-[#e0e0e0] flex-shrink-0" />
     <div>
       <p className="font-[family-name:var(--font-playfair)] text-[#1a1a1a] text-[16px] font-semibold">
