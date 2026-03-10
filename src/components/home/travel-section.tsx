@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 const notIncluded = [
   "Flights to/from Funchal",
@@ -19,6 +20,7 @@ export function TravelSection() {
     <section className="bg-white py-16 md:py-24 px-6 md:px-20 xl:px-44 flex flex-col lg:flex-row gap-10 lg:gap-20">
       {/* Left 2/3 */}
       <div className="flex flex-col gap-6 w-full lg:flex-none" style={{ flex: "0 0 calc(66.666% - 40px)" }}>
+        <SectionBadge label="Travel" />
         <h2 className="serif font-bold text-3xl md:text-4xl text-(--green) leading-[1.05] tracking-tighter">
           Travel &amp; Transfers
         </h2>

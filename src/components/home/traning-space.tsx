@@ -39,7 +39,7 @@ export function TrainingSpace() {
 function SectionIntro() {
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <SectionBadge label="Training Space" />
+      <SectionBadge label="Training Space" className="mx-auto" />
       <h2 className="serif font-bold text-4xl md:text-5xl lg:text-6xl text-(--green) leading-[1.05] tracking-tighter">
         Where You&apos;ll Train
       </h2>
