@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { Instagram, Play } from "lucide-react";
+import { Instagram, Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 const SLIDE_INTERVAL = 3000;
 
@@ -28,7 +29,11 @@ const trainers: Trainer[] = [
     instagramUrl: "https://www.instagram.com/miglena.thepoledancer/",
     slides: [
       { type: "image", src: "/images/trainer/trainer-1.jpg" },
-      { type: "youtube", url: "https://youtube.com/shorts/ZEY2TwtPD6k?si=meoDdTToDpwfO4fK", thumbnailId: "ZEY2TwtPD6k" },
+      {
+        type: "youtube",
+        url: "https://youtube.com/shorts/ZEY2TwtPD6k?si=meoDdTToDpwfO4fK",
+        thumbnailId: "ZEY2TwtPD6k",
+      },
     ],
   },
   {
@@ -37,8 +42,14 @@ const trainers: Trainer[] = [
     description:
       "Based in Madeira, leading the retreat with dynamic spinning combinations and seamless flow. Verolina brings structure and energy, balancing challenge with care.",
     instagram: "@verolina.pole",
+    instagramUrl: "https://www.instagram.com/madeiracreativevillage/",
     slides: [
-      { type: "youtube", url: "https://www.youtube.com/watch?v=HDHDfb1qVcQ", thumbnailId: "HDHDfb1qVcQ" },
+      { type: "image", src: "/images/trainer/trainer-2.png" },
+      {
+        type: "youtube",
+        url: "https://www.youtube.com/watch?v=HDHDfb1qVcQ",
+        thumbnailId: "HDHDfb1qVcQ",
+      },
     ],
   },
 ];
@@ -66,7 +77,10 @@ function TrainerSlider({ slides }: { slides: TrainerSlide[] }) {
   }, [current]);
 
   return (
-    <div className="relative flex-none w-60 xl:w-80 rounded-3xl overflow-hidden" style={{ height: 605 }}>
+    <div
+      className="relative w-full md:flex-none md:w-60 xl:w-80 rounded-3xl overflow-hidden group"
+      style={{ height: 450 }}
+    >
       {slides.map((slide, i) => (
         <div
           key={i}
@@ -74,13 +88,21 @@ function TrainerSlider({ slides }: { slides: TrainerSlide[] }) {
           style={{ opacity: i === current ? 1 : 0 }}
         >
           {slide.type === "image" ? (
-            <img src={slide.src} alt="Trainer" className="w-full h-full object-cover" />
+            <Image
+              src={slide.src}
+              alt="Trainer"
+              fill
+              sizes="(max-width: 1280px) 240px, 320px"
+              className="object-cover"
+            />
           ) : (
             <>
-              <img
+              <Image
                 src={`https://img.youtube.com/vi/${slide.thumbnailId}/maxresdefault.jpg`}
                 alt="Video thumbnail"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 1280px) 240px, 320px"
+                className="object-cover"
               />
               <a
                 href={slide.url}
@@ -97,6 +119,24 @@ function TrainerSlider({ slides }: { slides: TrainerSlide[] }) {
           )}
         </div>
       ))}
+
+      {/* Flèches style Instagram */}
+      {slides.length > 1 && current > 0 && (
+        <button
+          onClick={() => goTo(current - 1)}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow transition-opacity duration-200 opacity-0 group-hover:opacity-100 cursor-pointer"
+        >
+          <ChevronLeft size={16} className="text-black" />
+        </button>
+      )}
+      {slides.length > 1 && current < slides.length - 1 && (
+        <button
+          onClick={() => goTo(current + 1)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow transition-opacity duration-200 opacity-0 group-hover:opacity-100 cursor-pointer"
+        >
+          <ChevronRight size={16} className="text-black" />
+        </button>
+      )}
 
       {/* Dots */}
       {slides.length > 1 && (
@@ -122,7 +162,7 @@ function TrainerSlider({ slides }: { slides: TrainerSlide[] }) {
 function TrainerColumn({ trainer }: { trainer: Trainer }) {
   return (
     <div
-      className="flex-1 flex gap-[30px] rounded-3xl overflow-hidden p-8"
+      className="flex-1 flex flex-col md:flex-row gap-6 md:gap-7.5 rounded-3xl overflow-hidden p-6 md:p-8"
       style={{ background: "#FAFAFA" }}
     >
       {/* Info */}
@@ -154,10 +194,10 @@ function TrainerColumn({ trainer }: { trainer: Trainer }) {
 
 export function TrainersSection() {
   return (
-    <section className="bg-(--beige) py-24 px-20 xl:px-[140px] flex flex-col gap-14">
+    <section className="bg-(--beige) py-16 md:py-24 px-6 md:px-20 xl:px-35 flex flex-col gap-10 md:gap-14">
       {/* Header */}
       <div className="flex flex-col items-center gap-3 text-center">
-        <h2 className="serif font-bold text-6xl text-(--green) leading-[1.05] tracking-tighter">
+        <h2 className="serif font-bold text-4xl md:text-5xl lg:text-6xl text-(--green) leading-[1.05] tracking-tighter">
           Meet Your Pole Trainers
         </h2>
         <p className="text-sm text-(--green)/50">
@@ -166,7 +206,7 @@ export function TrainersSection() {
       </div>
 
       {/* Two trainer columns */}
-      <div className="flex gap-[60px]">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-15">
         {trainers.map((trainer) => (
           <TrainerColumn key={trainer.name} trainer={trainer} />
         ))}
