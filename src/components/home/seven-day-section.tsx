@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 const features = [
   { title: "Daily Pole Workshops", description: "Mixed groups" },
@@ -13,9 +14,7 @@ export function SevenDaySection() {
   return (
     <section className="bg-(--beige) flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-8 xl:gap-16 px-6 md:px-20 xl:px-32 py-16 md:py-24">
       <div className="w-full lg:w-1/2 flex flex-col">
-        <p className="text-xs uppercase tracking-widest text-(--green)/50 mb-2">
-          Madeira, Portugal · Lyrical Pole Dancing
-        </p>
+        <SectionBadge label="Madeira, Portugal · Lyrical Pole Dancing" className="mb-2" />
         <h2 className="w-full md:w-3/4 serif font-bold text-4xl md:text-5xl lg:text-6xl text-(--green) leading-[1.05] tracking-tighter mb-6">
           A 7-day pole dance retreat in <br /> Madeira Island
         </h2>
@@ -53,20 +52,17 @@ function LetterCard() {
     <div className="bg-white rounded-2xl py-6 px-8 mb-4 text-sm text-(--green)/70 leading-relaxed space-y-4 shadow-lg shadow-black/5">
       <p className="serif italic text-(--green) text-base">Dear Guest,</p>
       <p>
-        Imagine waking up in a historic Madeiran villa, surrounded by the lush green of the
-        island&apos;s hills, with the Atlantic glittering beyond the terrace. This is where your
-        retreat begins — not at the studio, but at the soul.
+        Wake up in a historic villa in Madeira, surrounded by green hills and the Atlantic Ocean.
       </p>
       <p>
-        For seven days, you will move with intention. Our coaches will guide you through lyrical
-        pole sessions designed to build strength, fluency, and expression — not just technique.
-        Every class is intimate (max 10 dancers) because we believe depth only comes in small
-        groups.
+        Learn lyrical pole in small groups (maximum 10 people) and discover how to express yourself
+        on the pole like a true artist. Take part in a live violin concert where you are the
+        performer — the dancer.
       </p>
       <p>
-        Between sessions: a boat trip with a hanging pole over the ocean. A photoshoot at the black
-        sand beach. A hike through Fanal Forest. A tea ceremony at sunset. These are the moments
-        that will stay with you far longer than any class.
+        Outside the classes, try a pole on a boat over the ocean, take photos on black sand beaches,
+        hike Fanal Forest, and end the day with a sunset tea ceremony. These experiences will
+        strengthen your body and stay with you long after the retreat ends.
       </p>
       <p className="italic text-(--green)/60">We cannot wait to host you. — The MCV Team</p>
     </div>
