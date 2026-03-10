@@ -1,18 +1,21 @@
 import { Fragment } from "react/jsx-runtime";
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/home/hero";
 import { SevenDaySection } from "@/components/home/seven-day-section";
-import { ExploreSection } from "@/components/home/explore-section";
-import { TrainingSpace } from "@/components/home/traning-space";
-import { FoodSection } from "@/components/home/food-section";
-import { LocationSection } from "@/components/home/location-section";
-import { CharmSection } from "@/components/home/charm-section";
-import { TrainersSection } from "@/components/home/trainers-section";
-import { LineUpSection } from "@/components/home/line-up-section";
-import { TravelSection } from "@/components/home/travel-section";
-import Footer from "@/layout/footer";
-import Testimonials from "@/components/home/testimonials-section";
-import { FaqSection } from "@/components/home/faq-section";
-import { BookSpotSection } from "@/components/home/book-spot-section";
+
+// Sections below-the-fold chargées en lazy
+const ExploreSection = dynamic(() => import("@/components/home/explore-section").then(m => ({ default: m.ExploreSection })));
+const TrainingSpace = dynamic(() => import("@/components/home/traning-space").then(m => ({ default: m.TrainingSpace })));
+const FoodSection = dynamic(() => import("@/components/home/food-section").then(m => ({ default: m.FoodSection })));
+const LocationSection = dynamic(() => import("@/components/home/location-section").then(m => ({ default: m.LocationSection })));
+const CharmSection = dynamic(() => import("@/components/home/charm-section").then(m => ({ default: m.CharmSection })));
+const LineUpSection = dynamic(() => import("@/components/home/line-up-section").then(m => ({ default: m.LineUpSection })));
+const TrainersSection = dynamic(() => import("@/components/home/trainers-section").then(m => ({ default: m.TrainersSection })));
+const TravelSection = dynamic(() => import("@/components/home/travel-section").then(m => ({ default: m.TravelSection })));
+const Testimonials = dynamic(() => import("@/components/home/testimonials-section"));
+const BookSpotSection = dynamic(() => import("@/components/home/book-spot-section").then(m => ({ default: m.BookSpotSection })));
+const FaqSection = dynamic(() => import("@/components/home/faq-section").then(m => ({ default: m.FaqSection })));
+const Footer = dynamic(() => import("@/layout/footer"));
 
 export function HomeView() {
   return (
