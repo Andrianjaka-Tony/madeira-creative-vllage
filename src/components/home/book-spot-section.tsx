@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Check } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 const FORM_URL = "https://forms.gle/RKq6z77pzecVbxxT9";
 
@@ -48,9 +49,7 @@ export function BookSpotSection() {
       <div className="px-6 md:px-20 xl:px-36.5">
         {/* Top header */}
         <div className="flex flex-col items-center mb-10">
-          <p className="text-[#888] text-[12px] tracking-[0.15em] uppercase mb-3">
-            2026 Season — Limited Spots
-          </p>
+          <SectionBadge label="2026 Season — Limited Spots" className="mx-auto mb-3" />
           <h2 className="font-[family-name:var(--font-playfair)] text-[#1a1a1a] text-[32px] md:text-[48px] font-bold leading-tight text-center">
             Reserve Your Spot
           </h2>

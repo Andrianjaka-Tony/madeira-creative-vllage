@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Play } from "lucide-react";
-import Tagline from "@/components/home/tagline";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 const testimonials = [
   {
@@ -91,8 +91,9 @@ export default function Testimonials({
         <div className="mx-auto w-full max-w-[1170px]">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-12 gap-8">
-            <div className="flex flex-col items-start">
-              <h2 className="-translate-y-4 font-[family-name:var(--font-playfair)] text-white text-left text-[32px] md:text-[48px] lg:text-[56px] font-bold leading-[1.1] max-w-[500px]">
+            <div className="flex flex-col items-start gap-4">
+              <SectionBadge label="Previous Experiences" bg="rgba(255,255,255,0.08)" variant="dark" />
+              <h2 className="font-[family-name:var(--font-playfair)] text-white text-left text-[32px] md:text-[48px] lg:text-[56px] font-bold leading-[1.1] max-w-[500px]">
                 {title}
               </h2>
             </div>

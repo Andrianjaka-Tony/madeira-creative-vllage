@@ -241,7 +241,7 @@ function ActivityCard({ title, description, assets }: ActivityCardProps) {
       {assets.length > 1 && current > 0 && (
         <button
           onClick={(e) => { e.stopPropagation(); prev(e); }}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow transition-opacity duration-200 opacity-0 group-hover:opacity-100 cursor-pointer"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow transition-opacity duration-200 lg:opacity-0 lg:group-hover:opacity-100 cursor-pointer"
         >
           <ChevronLeft size={16} className="text-black" />
         </button>
@@ -249,7 +249,7 @@ function ActivityCard({ title, description, assets }: ActivityCardProps) {
       {assets.length > 1 && current < assets.length - 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); next(e); }}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow transition-opacity duration-200 opacity-0 group-hover:opacity-100 cursor-pointer"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow transition-opacity duration-200 lg:opacity-0 lg:group-hover:opacity-100 cursor-pointer"
         >
           <ChevronRight size={16} className="text-black" />
         </button>

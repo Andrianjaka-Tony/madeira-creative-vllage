@@ -13,18 +13,18 @@ type CharmFeatureProps = {
 function AssetBlock({ asset }: { asset: CharmAsset }) {
   if (asset.type === "video") {
     return (
-      <div className="flex-1 rounded-3xl overflow-hidden" style={{ height: "352px" }}>
+      <div className="flex-1 rounded-3xl overflow-hidden aspect-square lg:aspect-auto lg:h-[352px]">
         <video src={asset.src} controls playsInline className="w-full h-full object-cover" />
       </div>
     );
   }
   return (
-    <div className="relative flex-1 rounded-3xl overflow-hidden" style={{ height: "352px" }}>
+    <div className="relative flex-1 rounded-3xl overflow-hidden aspect-square lg:aspect-auto lg:h-[352px]">
       <Image
         src={asset.src}
         alt={asset.alt}
         fill
-        sizes="(max-width: 1280px) 25vw, 400px"
+        sizes="(max-width: 1024px) 45vw, 25vw"
         className="object-cover"
       />
     </div>
@@ -73,7 +73,7 @@ export function CharmSection() {
       </div>
 
       {/* Cover */}
-      <div className="relative rounded-3xl overflow-hidden w-full" style={{ height: "480px" }}>
+      <div className="relative rounded-3xl overflow-hidden w-full h-48 md:h-80 lg:h-120">
         <Image
           src="/images/charm/charm-1.jpg"
           alt="Madeira villa exterior"
@@ -131,10 +131,9 @@ export function CharmSection() {
           ].map((img) => (
             <div
               key={img.alt}
-              className="relative flex-1 rounded-3xl overflow-hidden"
-              style={{ height: "290px" }}
+              className="relative flex-1 rounded-3xl overflow-hidden aspect-square md:aspect-auto md:h-72.5"
             >
-              <Image src={img.src} alt={img.alt} fill sizes="33vw" className="object-cover" />
+              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 90vw, 33vw" className="object-cover" />
             </div>
           ))}
         </div>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronUp, ChevronDown } from "lucide-react";
-import Tagline from "@/components/home/tagline";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 type ScheduleItem = { time: string; title: string; description: string };
 type Day = { number: number; days: string; title: string; items: ScheduleItem[] };
@@ -220,12 +220,12 @@ export function LineUpSection() {
 
   return (
     <section className="relative py-[80px]">
-      <Image src="/images/line-up.jpg" alt="" fill className="object-cover" />
+      <Image src="/images/line-up-2.jpg" alt="" fill className="object-cover" />
       <div className="absolute inset-0 bg-white/20" />
 
       <div className="relative px-6 md:px-20 xl:px-36.5">
         <div className="mb-10">
-          <Tagline title="THE PROGRAMME" />
+          <SectionBadge label="The Programme" bg="rgba(255,255,255,0.8)" className="mb-4" />
           <h2 className="font-[family-name:var(--font-playfair)] text-[#1a1a1a] text-[32px] md:text-[48px] font-bold leading-tight mt-2 mb-3">
             Your Daily Line-Up
           </h2>

@@ -175,8 +175,8 @@ export default function Footer() {
                 </span>
               </div>
               <p className="font-inter font-normal text-[14px] leading-5 text-white/70">
-                A unique village in Madeira with nature cabins, outdoor workspaces, and retreats for
-                creatives and active individuals.
+                Active Holidays & Retreats in Madeira. Rebuild your strength. Rediscover your
+                confidence through sport, nature, and art.
               </p>
             </div>
 
