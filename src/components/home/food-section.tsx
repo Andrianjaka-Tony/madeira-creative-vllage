@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionBadge } from "@/components/ui/section-badge";
 
 const buffetItems = [
@@ -21,10 +22,10 @@ const gridImages = [
 
 export function FoodSection() {
   return (
-    <section className="bg-white flex items-start gap-7.5 px-20 xl:px-44 py-24">
-      <div className="w-1/2 flex flex-col">
+    <section className="bg-white flex flex-col lg:flex-row items-start gap-7.5 px-6 md:px-20 xl:px-44 py-16 md:py-24">
+      <div className="w-full lg:w-1/2 flex flex-col">
         <SectionBadge label="Food" />
-        <h2 className="mt-6 serif font-bold text-6xl text-(--green) leading-[1.05] tracking-tighter mb-6">
+        <h2 className="mt-6 serif font-bold text-4xl md:text-5xl lg:text-6xl text-(--green) leading-[1.05] tracking-tighter mb-6">
           Meals &amp; Dining
         </h2>
         <p className="text-sm text-(--green)/70 leading-relaxed mb-2">
@@ -32,9 +33,7 @@ export function FoodSection() {
           <br />
           Each morning, you will enjoy a full continental buffet breakfast served at the hotel.
         </p>
-        <p className="text-sm text-(--green)/70 leading-relaxed mt-4 mb-3">
-          The buffet includes:
-        </p>
+        <p className="text-sm text-(--green)/70 leading-relaxed mt-4 mb-3">The buffet includes:</p>
         <ul className="space-y-1.5 mb-8">
           {buffetItems.map((item) => (
             <li key={item} className="flex items-start gap-2 text-sm text-(--green)/70">
@@ -64,34 +63,87 @@ export function FoodSection() {
         </p>
       </div>
 
+      {/* Mobile image grid */}
+      <div className="lg:hidden grid grid-cols-2 gap-3 w-full">
+        {gridImages.map((img) => (
+          <div key={img.alt} className="relative rounded-2xl overflow-hidden" style={{ height: 180 }}>
+            <Image src={img.src} alt={img.alt} fill sizes="50vw" className="object-cover" />
+          </div>
+        ))}
+      </div>
+
       <div
-        className="w-1/2"
+        className="hidden lg:grid w-full lg:w-1/2 ml-auto scale-80 translate-x-1/8 translate-y-4"
         style={{
-          display: "grid",
           gridTemplateColumns: "minmax(0, 324px) minmax(0, 271px)",
           gridTemplateRows: "350px 206px 225px",
           gap: "24px",
         }}
       >
         {/* Image 1 : C1-C2, L1-L2 */}
-        <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "1", gridRow: "1 / 3" }}>
-          <img src={gridImages[0].src} alt={gridImages[0].alt} className="w-full h-full object-cover" />
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ gridColumn: "1", gridRow: "1 / 3" }}
+        >
+          <Image
+            src={gridImages[0].src}
+            alt={gridImages[0].alt}
+            fill
+            sizes="(max-width: 1280px) 40vw, 324px"
+            className="object-cover"
+          />
         </div>
         {/* Image 2 : C3, L1 */}
-        <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "2", gridRow: "1" }}>
-          <img src={gridImages[1].src} alt={gridImages[1].alt} className="w-full h-full object-cover" />
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ gridColumn: "2", gridRow: "1" }}
+        >
+          <Image
+            src={gridImages[1].src}
+            alt={gridImages[1].alt}
+            fill
+            sizes="(max-width: 1280px) 25vw, 271px"
+            className="object-cover"
+          />
         </div>
         {/* Image 3 : C3, L2 */}
-        <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "2", gridRow: "2" }}>
-          <img src={gridImages[2].src} alt={gridImages[2].alt} className="w-full h-full object-cover" />
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ gridColumn: "2", gridRow: "2" }}
+        >
+          <Image
+            src={gridImages[2].src}
+            alt={gridImages[2].alt}
+            fill
+            sizes="(max-width: 1280px) 25vw, 271px"
+            className="object-cover"
+          />
         </div>
         {/* Image 4 : C1-C2, L3 */}
-        <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "1", gridRow: "3" }}>
-          <img src={gridImages[3].src} alt={gridImages[3].alt} className="w-full h-full object-cover" />
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ gridColumn: "1", gridRow: "3" }}
+        >
+          <Image
+            src={gridImages[3].src}
+            alt={gridImages[3].alt}
+            fill
+            sizes="(max-width: 1280px) 40vw, 324px"
+            className="object-cover"
+          />
         </div>
         {/* Image 5 : C3, L3 */}
-        <div className="rounded-2xl overflow-hidden" style={{ gridColumn: "2", gridRow: "3" }}>
-          <img src={gridImages[4].src} alt={gridImages[4].alt} className="w-full h-full object-cover" />
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ gridColumn: "2", gridRow: "3" }}
+        >
+          <Image
+            src={gridImages[4].src}
+            alt={gridImages[4].alt}
+            fill
+            sizes="(max-width: 1280px) 25vw, 271px"
+            className="object-cover"
+          />
         </div>
       </div>
     </section>
