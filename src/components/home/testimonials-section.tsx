@@ -98,7 +98,7 @@ export default function Testimonials({
             </div>
 
             {/* Quote card */}
-            <div className="flex-shrink-0 w-full md:w-[340px] lg:w-[380px] rounded-[16px] p-6 flex flex-col justify-between">
+            <div className="shrink-0 w-full md:w-[340px] lg:w-[380px] rounded-[16px] p-6 flex flex-col justify-between">
               <span className="text-white text-3xl font-serif leading-none mb-4">&ldquo;</span>
               <p className="font-[family-name:var(--font-playfair)] text-white text-[16px] italic leading-relaxed mb-6">
                 I came home a different dancer and a different person. Madeira gave me something I

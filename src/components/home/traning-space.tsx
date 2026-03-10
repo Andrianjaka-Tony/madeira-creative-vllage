@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MapPin, ShieldCheck, Sparkles } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
@@ -27,7 +28,7 @@ const galleryImages = [
 
 export function TrainingSpace() {
   return (
-    <section className="bg-(--beige) px-20 xl:px-40 py-24 flex flex-col">
+    <section className="bg-(--beige) px-6 md:px-20 xl:px-40 py-16 md:py-24 flex flex-col">
       <SectionIntro />
       <TrainingBlock />
       <PhotoGallery />
@@ -39,10 +40,10 @@ function SectionIntro() {
   return (
     <div className="flex flex-col items-center gap-6 text-center">
       <SectionBadge label="Training Space" />
-      <h2 className="serif font-bold text-6xl text-(--green) leading-[1.05] tracking-tighter">
+      <h2 className="serif font-bold text-4xl md:text-5xl lg:text-6xl text-(--green) leading-[1.05] tracking-tighter">
         Where You&apos;ll Train
       </h2>
-      <p className="text-sm text-(--blue)/70 leading-relaxed w-1/2">
+      <p className="text-sm text-(--blue)/70 leading-relaxed w-full md:w-1/2">
         We believe a retreat is a moment to step away from the studio, so we organize pole training
         sessions directly at the villa where we stay — either outdoors or indoors.
       </p>
@@ -52,12 +53,14 @@ function SectionIntro() {
 
 function TrainingBlock() {
   return (
-    <div className="mt-16 flex gap-12 items-start">
-      <div className="flex-none w-[45%] aspect-12/10 rounded-3xl overflow-hidden">
-        <img
+    <div className="mt-12 md:mt-16 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+      <div className="relative w-full lg:flex-none lg:w-[45%] aspect-12/10 rounded-3xl overflow-hidden">
+        <Image
           src="/images/training/training-1.jpg"
           alt="Training villa"
-          className="w-full h-full object-cover"
+          fill
+          sizes="45vw"
+          className="object-cover"
         />
       </div>
       <div className="flex flex-col gap-6 pt-2">
@@ -107,10 +110,10 @@ function HighlightItem({ icon: Icon, label, description }: HighlightItemProps) {
 
 function PhotoGallery() {
   return (
-    <div className="mt-6 grid grid-cols-3 gap-6">
+    <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
       {galleryImages.map((src, i) => (
-        <div key={i} className="aspect-3/4 rounded-3xl overflow-hidden">
-          <img src={src} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover" />
+        <div key={i} className="relative aspect-square rounded-3xl overflow-hidden">
+          <Image src={src} alt={`Gallery ${i + 1}`} fill sizes="33vw" className="object-cover" />
         </div>
       ))}
     </div>

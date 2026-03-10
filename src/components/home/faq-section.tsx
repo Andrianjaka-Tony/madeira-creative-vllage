@@ -46,11 +46,11 @@ export function FaqSection() {
   };
 
   return (
-    <section className="bg-[#F0EDE6] py-[80px]">
-      <div className="px-[80px] xl:px-[146px] flex flex-row gap-16 xl:gap-24">
+    <section className="bg-[#F0EDE6] py-12 md:py-[80px]">
+      <div className="px-6 md:px-[80px] xl:px-36.5 flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-24">
         {/* Left side */}
-        <div className="w-[320px] flex-shrink-0">
-          <h2 className="font-[family-name:var(--font-playfair)] text-[#1a1a1a] text-[48px] font-bold leading-[1.1] mb-4">
+        <div className="w-full lg:w-[320px] lg:shrink-0">
+          <h2 className="font-[family-name:var(--font-playfair)] text-[#1a1a1a] text-[32px] md:text-[48px] font-bold leading-[1.1] mb-4">
             Frequently Asked Questions
           </h2>
           <div className="w-8 h-[2px] bg-[#1a1a1a] mb-6" />

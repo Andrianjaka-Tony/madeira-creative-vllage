@@ -44,14 +44,14 @@ export function BookSpotSection() {
   const selectedOption = roomOptions.find((r) => r.id === selected);
 
   return (
-    <section className="bg-white py-[80px]">
-      <div className="px-20 xl:px-[146px]">
+    <section className="bg-white py-12 md:py-20">
+      <div className="px-6 md:px-20 xl:px-36.5">
         {/* Top header */}
         <div className="flex flex-col items-center mb-10">
           <p className="text-[#888] text-[12px] tracking-[0.15em] uppercase mb-3">
             2026 Season — Limited Spots
           </p>
-          <h2 className="font-[family-name:var(--font-playfair)] text-[#1a1a1a] text-[48px] font-bold leading-tight text-center">
+          <h2 className="font-[family-name:var(--font-playfair)] text-[#1a1a1a] text-[32px] md:text-[48px] font-bold leading-tight text-center">
             Reserve Your Spot
           </h2>
           <p className="text-[#888] text-[15px] text-center mt-3 max-w-[380px] leading-relaxed">
@@ -61,11 +61,11 @@ export function BookSpotSection() {
         </div>
 
         {/* Content */}
-        <div className="flex gap-6 shadow-[0_4px_40px_rgba(0,0,0,0.08)] rounded-[20px] overflow-hidden">
+        <div className="flex flex-col md:flex-row gap-6 shadow-[0_4px_40px_rgba(0,0,0,0.08)] rounded-[20px] overflow-hidden">
           {/* Image — 2/5 */}
-          <div className="relative w-2/5 min-h-[840px] flex-shrink-0">
+          <div className="relative w-full md:w-2/5 h-70 md:h-175 shrink-0">
             <Image
-              src="/images/hero.png"
+              src="/images/book.jpg"
               alt="Pole Retreat Madeira"
               fill
               className="object-cover"

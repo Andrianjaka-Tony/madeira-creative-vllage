@@ -1,9 +1,6 @@
-"use client";
-
-import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
-import { VideoModal } from "@/components/ui/video-modal";
+import { ArrowRight } from "lucide-react";
 
 const features = [
   { title: "Daily Pole Workshops", description: "Mixed groups" },
@@ -14,12 +11,12 @@ const features = [
 
 export function SevenDaySection() {
   return (
-    <section className="bg-(--beige) flex justify-between items-center gap-8 xl:gap-16 px-20 xl:px-32 py-24">
-      <div className="w-1/2 flex flex-col">
+    <section className="bg-(--beige) flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-8 xl:gap-16 px-6 md:px-20 xl:px-32 py-16 md:py-24">
+      <div className="w-full lg:w-1/2 flex flex-col">
         <p className="text-xs uppercase tracking-widest text-(--green)/50 mb-2">
           Madeira, Portugal · Lyrical Pole Dancing
         </p>
-        <h2 className="w-3/4 serif font-bold text-6xl text-(--green) leading-[1.05] tracking-tighter mb-6">
+        <h2 className="w-full md:w-3/4 serif font-bold text-4xl md:text-5xl lg:text-6xl text-(--green) leading-[1.05] tracking-tighter mb-6">
           A 7-day pole dance retreat in <br /> Madeira Island
         </h2>
         <Tagline text="This is not a vacation. It's a reset for your body and soul." />
@@ -90,39 +87,15 @@ function FeatureCard({ title, description }: FeatureCardProps) {
 }
 
 function SideImage() {
-  const [modalOpen, setModalOpen] = useState(false);
-
   return (
-    <>
-      {modalOpen && (
-        <VideoModal
-          src="/images/7-days-video.mov"
-          onClose={() => setModalOpen(false)}
-        />
-      )}
-      <div
-        className="relative flex-none w-96 xl:w-125 aspect-3/4 rounded-3xl overflow-hidden cursor-pointer group"
-        onClick={() => setModalOpen(true)}
-      >
-        <img
-          src="/images/7-days-cover.JPG"
-          alt="7-day retreat preview"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
-
-        {/* Play button */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
-            <Play size={24} className="text-white ml-1" />
-          </div>
-        </div>
-
-        {/* Bottom label */}
-        <div className="absolute bottom-0 left-0 right-0 p-5">
-          <p className="text-white/80 text-sm italic">Feel what training in paradise is like.</p>
-        </div>
-      </div>
-    </>
+    <div className="w-full lg:flex-none lg:w-96 xl:w-125 aspect-3/4 rounded-3xl overflow-hidden">
+      <video
+        src="/images/7-days-video.mov"
+        poster="/images/7-days-cover.JPG"
+        controls
+        playsInline
+        className="w-full h-full object-cover"
+      />
+    </div>
   );
 }

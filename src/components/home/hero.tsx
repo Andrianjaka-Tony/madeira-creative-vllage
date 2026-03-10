@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 
@@ -12,20 +13,29 @@ export function Hero() {
   ];
 
   return (
-    <div className="relative w-screen h-[80vh] flex flex-col items-center justify-center">
+    <div className="relative w-screen flex flex-col items-center justify-center">
+      <Image
+        src="/images/coverImg.jpg"
+        alt=""
+        fill
+        priority
+        className="absolute object-cover"
+        style={{ zIndex: -2 }}
+        sizes="100vw"
+      />
       <video
         autoPlay
         muted
         loop
         playsInline
-        poster="/images/coverImg.jpg"
-        className="absolute h-full w-full -z-2 object-cover"
+        className="absolute h-full w-full object-cover"
+        style={{ zIndex: -2 }}
       >
-        <source src="/trimmed.mov" type="video/mp4" />
+        <source src="/pole-dance-hero.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 -z-1 bg-black/60"></div>
+      <div className="absolute inset-0 bg-black/60" style={{ zIndex: -1 }}></div>
 
-      <h1 className="mt-[28vh] w-2/5 text-7xl text-(--beige) text-center font-bold serif tracking-tighter leading-[1.1]">
+      <h1 className="mt-[20vh] md:mt-[28vh] w-4/5 md:w-3/5 lg:w-2/5 text-4xl md:text-5xl lg:text-7xl text-(--beige) text-center font-bold serif tracking-tighter leading-[1.1]">
         Pole Dance Retreat in Madeira Island
       </h1>
       <Button
@@ -36,9 +46,9 @@ export function Hero() {
         href="https://forms.gle/RKq6z77pzecVbxxT9"
       />
 
-      <div className="px-10 mb-12 mt-auto w-4/5 bg-(--green)/70 rounded-2xl border border-white/10 grid grid-cols-6 divide-x divide-white/20">
+      <div className="px-4 md:px-10 mt-[10vh] md:mt-[20vh] mb-8 md:mb-12 w-[95%] md:w-4/5 bg-(--green)/70 rounded-2xl border border-white/10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
         {infos.map((info, key) => (
-          <Info key={key} {...info} />
+          <Info key={key} index={key} total={6} {...info} />
         ))}
       </div>
     </div>
@@ -48,10 +58,12 @@ export function Hero() {
 type InfoProps = {
   label: string;
   value: string;
+  index: number;
+  total: number;
 };
 function Info({ label, value }: InfoProps) {
   return (
-    <div className="py-6 flex flex-col justify-center gap-1 px-6 first:pl-0 last:pr-0">
+    <div className="py-5 md:py-6 flex flex-col justify-center gap-1 px-4 md:px-6 border-white/20 border-b border-r lg:border-b-0 nth-[2n]:border-r-0 md:nth-[2n]:border-r md:nth-[3n]:border-r-0 lg:nth-[3n]:border-r lg:last:border-r-0">
       <span className="text-xs uppercase tracking-widest text-white/50">{label}</span>
       <span className="text-xs text-white/90">{value}</span>
     </div>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const notIncluded = [
   "Flights to/from Funchal",
   "Travel insurance (recommended)",
@@ -14,10 +16,10 @@ const gridImages = [
 
 export function TravelSection() {
   return (
-    <section className="bg-white py-24 px-20 xl:px-44 flex gap-20">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-20 xl:px-44 flex flex-col lg:flex-row gap-10 lg:gap-20">
       {/* Left 2/3 */}
-      <div className="flex flex-col gap-6" style={{ flex: "0 0 calc(66.666% - 40px)" }}>
-        <h2 className="serif font-bold text-4xl text-(--green) leading-[1.05] tracking-tighter">
+      <div className="flex flex-col gap-6 w-full lg:flex-none" style={{ flex: "0 0 calc(66.666% - 40px)" }}>
+        <h2 className="serif font-bold text-3xl md:text-4xl text-(--green) leading-[1.05] tracking-tighter">
           Travel &amp; Transfers
         </h2>
         <p className="text-sm text-(--green)/50">Getting to the retreat made simple.</p>
@@ -77,11 +79,13 @@ export function TravelSection() {
         {/* 2×2 image grid */}
         <div className="grid grid-cols-2 gap-3">
           {gridImages.map((img) => (
-            <div key={img.alt} className="rounded-2xl overflow-hidden" style={{ height: 140 }}>
-              <img
+            <div key={img.alt} className="relative rounded-2xl overflow-hidden" style={{ height: 140 }}>
+              <Image
                 src={img.src}
                 alt={img.alt}
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 200px"
+                className="object-cover"
               />
             </div>
           ))}
