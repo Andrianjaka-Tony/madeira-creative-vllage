@@ -11,99 +11,145 @@ type Day = { number: number; days: string; title: string; items: ScheduleItem[] 
 const lineup: Day[] = [
   {
     number: 1,
-    days: "DAY 1 — SUNDAY",
-    title: "Arrival & Welcome",
+    days: "DAY 1",
+    title: "Arrive & Train",
     items: [
       {
-        time: "14:00",
-        title: "Villa Check-in",
-        description: "Private transfer from Funchal Airport included. Settle into your room.",
+        time: "CHECK-IN",
+        title: "Check-in from 2pm",
+        description: "Arrival + Welcome Brief. If your flight is earlier, you can relax at the villa.",
       },
       {
-        time: "16:00",
-        title: "Welcome Orientation",
-        description: "Meet your coaches and fellow dancers. Tour of the villa space.",
+        time: "AFTERNOON",
+        title: "Grouping",
+        description: "Pool / Free Time",
       },
       {
-        time: "20:00",
-        title: "Welcome Dinner",
-        description: "Communal feast on the terrace. Local Madeiran dishes. Wine and connection.",
+        time: "EVENING",
+        title: "Social Welcome Dinner",
+        description: "Included in the price.",
       },
     ],
   },
   {
     number: 2,
-    days: "DAYS 2–5",
-    title: "Core Training Days",
+    days: "DAY 2",
+    title: "Island Exploration & Training",
     items: [
       {
-        time: "09:00",
-        title: "Morning Movement",
-        description: "Warm-up flow and mobility work to prepare body and mind.",
+        time: "MORNING",
+        title: "Breakfast, Trip to Fanal Forest, Grocery Shopping Stop",
+        description: "",
       },
       {
-        time: "10:30",
-        title: "Pole Training Block",
-        description: "Two focused pole sessions per day with guest teachers and your coaches.",
+        time: "AFTERNOON",
+        title: "Pole Dance Class, Relaxing",
+        description: "",
       },
       {
-        time: "13:00",
-        title: "Lunch Break",
-        description: "Fresh lunches prepared at the villa. Rest, swim, or explore.",
-      },
-      {
-        time: "16:00",
-        title: "Afternoon Session",
-        description: "Floorwork, conditioning, or choreography depending on the day.",
-      },
-      {
-        time: "20:00",
-        title: "Evening",
-        description: "Group dinners, island excursions, or free time to recharge.",
+        time: "EVENING",
+        title: "Second Social Dinner",
+        description: "Included in the price.",
       },
     ],
   },
   {
     number: 3,
-    days: "DAY 6",
-    title: "Showcase Preparation",
+    days: "DAY 3",
+    title: "Tea Ceremony, Training, Boat Trip",
     items: [
       {
-        time: "10:00",
-        title: "Rehearsal",
-        description: "Final run-throughs and polish for the closing showcase performance.",
+        time: "MORNING",
+        title: "Breakfast, Tea Ceremony",
+        description: "",
       },
       {
-        time: "14:00",
-        title: "Free Afternoon",
-        description: "Rest, beach, or last Madeiran adventures before the evening.",
+        time: "AFTERNOON",
+        title: "Pole Dance Class, Relaxing",
+        description: "",
       },
       {
-        time: "19:00",
-        title: "Closing Showcase",
-        description: "Celebrate your week on stage. Family, friends, and fellow dancers welcome.",
-      },
-      {
-        time: "21:30",
-        title: "Farewell Dinner",
-        description: "A final dinner together to close out the retreat in style.",
+        time: "EVENING",
+        title: "Boat Trip with Hanging Pole",
+        description: "There will be two groups for the boat trip. Dinner in Funchal.",
       },
     ],
   },
   {
     number: 4,
-    days: "DAY 7 — SUNDAY",
-    title: "Departure",
+    days: "DAY 4",
+    title: "Island Exploration & Training",
     items: [
       {
-        time: "09:00",
-        title: "Breakfast",
-        description: "Last breakfast together at the villa before heading home.",
+        time: "MORNING",
+        title: "Photoshoot at Seixal Black Sand Beach",
+        description: "There will be two groups for the photoshoot.",
       },
       {
-        time: "11:00",
-        title: "Check-out",
-        description: "Transfers to Funchal Airport arranged based on your flight time.",
+        time: "AFTERNOON",
+        title: "Relax on the beach / pool, lessons",
+        description: "Planning depends on the group.",
+      },
+      {
+        time: "EVENING",
+        title: "Sunset Boat Trip with Hanging Pole",
+        description: "For the second group. Dinner in Funchal / Relaxing in the villa and free time for the first group.",
+      },
+    ],
+  },
+  {
+    number: 5,
+    days: "DAY 5",
+    title: "Photoshoot / Violin Concert",
+    items: [
+      {
+        time: "MORNING",
+        title: "Breakfast, Photoshooting in the villa",
+        description: "Depending on the group.",
+      },
+      {
+        time: "AFTERNOON",
+        title: "Pole Dance Class, Relaxing",
+        description: "",
+      },
+      {
+        time: "EVENING",
+        title: "Violin Concert Performance",
+        description: "",
+      },
+    ],
+  },
+  {
+    number: 6,
+    days: "DAY 6",
+    title: "Hiking / Farewell Drinks",
+    items: [
+      {
+        time: "MORNING",
+        title: "Pico do Arieiro Hiking",
+        description: "",
+      },
+      {
+        time: "AFTERNOON",
+        title: "Pole Dance Class, Relaxing",
+        description: "",
+      },
+      {
+        time: "EVENING",
+        title: "Farewell Drinks",
+        description: "",
+      },
+    ],
+  },
+  {
+    number: 7,
+    days: "DAY 7",
+    title: "Hiking / Farewell Drinks",
+    items: [
+      {
+        time: "MORNING",
+        title: "Breakfast, Checkouts",
+        description: "",
       },
     ],
   },
@@ -159,8 +205,8 @@ const DayAccordion = ({
       className={`overflow-hidden transition-all duration-300 ease-out ${isOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"}`}
     >
       <div className="px-6 pb-4 divide-y divide-[#f0ede6]">
-        {day.items.map((item) => (
-          <ScheduleRow key={item.time} item={item} />
+        {day.items.map((item, i) => (
+          <ScheduleRow key={i} item={item} />
         ))}
       </div>
     </div>
