@@ -2,6 +2,7 @@ import { Fragment } from "react/jsx-runtime";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/home/hero";
 import { SevenDaySection } from "@/components/home/seven-day-section";
+import { StickyBookBar } from "@/components/home/sticky-book-bar";
 
 // Sections below-the-fold chargées en lazy
 const ExploreSection = dynamic(() => import("@/components/home/explore-section").then(m => ({ default: m.ExploreSection })));
@@ -20,6 +21,8 @@ const Footer = dynamic(() => import("@/layout/footer"));
 export function HomeView() {
   return (
     <Fragment>
+      <StickyBookBar />
+      <div className="pb-20 md:pb-0">
       <Hero />
       <SevenDaySection />
       <ExploreSection />
@@ -34,6 +37,7 @@ export function HomeView() {
       <BookSpotSection />
       <FaqSection />
       <Footer />
+      </div>
     </Fragment>
   );
 }
