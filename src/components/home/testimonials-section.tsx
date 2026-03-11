@@ -50,7 +50,7 @@ const TestimonialCard = ({ item, className, style }: TestimonialCardProps) => {
         >
           <Image
             src={item.image}
-            alt={`Testimonial ${item.id}`}
+            alt={`Pole dance retreat Madeira testimonial ${item.id}`}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-115"
             style={imageStyle}
@@ -78,7 +78,7 @@ const TestimonialCard = ({ item, className, style }: TestimonialCardProps) => {
     <div className={`${className} group`} style={style}>
       <Image
         src={item.image}
-        alt={`Testimonial ${item.id}`}
+        alt={`Pole dance retreat Madeira testimonial ${item.id}`}
         fill
         className="object-cover transition-transform duration-500 group-hover:scale-115"
         style={imageStyle}
@@ -120,7 +120,7 @@ export default function Testimonials({
                 <div className="w-10 h-10 rounded-full overflow-hidden relative flex-shrink-0 bg-gray-600">
                   <Image
                     src="/images/testimonial/testimonial-1.jpg"
-                    alt="Ana G."
+                    alt="Ana G. — pole dance retreat Madeira participant"
                     fill
                     className="object-cover"
                   />
