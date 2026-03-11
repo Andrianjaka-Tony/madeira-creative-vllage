@@ -12,9 +12,7 @@ export function StickyBookBar() {
         </p>
       </div>
       <a
-        href={FORM_URL}
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#book"
         className="flex-1 bg-[#1a3328] text-white text-center py-3 rounded-full text-[15px] font-medium"
       >
         Reserve My Spot →

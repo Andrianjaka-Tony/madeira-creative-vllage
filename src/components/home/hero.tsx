@@ -43,7 +43,7 @@ export function Hero() {
         icon={ArrowUpRight}
         className="px-10 mt-10"
         variant="hero"
-        href="https://forms.gle/RKq6z77pzecVbxxT9"
+        href="#book"
       />
 
       <div className="px-4 md:px-10 mt-[10vh] md:mt-[20vh] mb-8 md:mb-12 w-[95%] md:w-4/5 bg-(--green)/70 rounded-2xl border border-white/10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">

@@ -185,7 +185,7 @@ function SectionHeader() {
           text="Book Retreat"
           icon={ArrowRight}
           variant="default"
-          href="https://forms.gle/RKq6z77pzecVbxxT9"
+          href="#book"
           className="w-fit"
         />
       </div>

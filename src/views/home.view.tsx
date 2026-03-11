@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/home/hero";
 import { SevenDaySection } from "@/components/home/seven-day-section";
 import { StickyBookBar } from "@/components/home/sticky-book-bar";
+import { Navbar } from "@/components/home/navbar";
 
 // Sections below-the-fold chargées en lazy
 const ExploreSection = dynamic(() => import("@/components/home/explore-section").then(m => ({ default: m.ExploreSection })));
@@ -21,6 +22,7 @@ const Footer = dynamic(() => import("@/layout/footer"));
 export function HomeView() {
   return (
     <Fragment>
+      <Navbar />
       <StickyBookBar />
       <div className="pb-20 md:pb-0">
       <Hero />

@@ -18,8 +18,9 @@ export function Button({ text, icon, variant = "hero", className, href }: Props)
   const cls = `py-3.5 px-6 flex items-center gap-2 tracking-tight font-semibold rounded-full cursor-pointer ${variants[variant]} ${className}`;
 
   if (href) {
+    const isExternal = href.startsWith("http");
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+      <a href={href} {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={cls}>
         <span>{text}</span>
         <Icon className="h-5 w-5" />
       </a>

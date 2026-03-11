@@ -45,7 +45,7 @@ export function BookSpotSection() {
   const selectedOption = roomOptions.find((r) => r.id === selected);
 
   return (
-    <section className="bg-white py-12 md:py-20">
+    <section id="book" className="bg-white py-12 md:py-20">
       <div className="px-6 md:px-20 xl:px-36.5">
         {/* Top header */}
         <div className="flex flex-col items-center mb-10">
