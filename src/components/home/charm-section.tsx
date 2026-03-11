@@ -114,7 +114,7 @@ export function CharmSection() {
       <div className="relative rounded-3xl overflow-hidden w-full h-48 md:h-80 lg:h-120 group">
         <Image
           src="/images/charm/charm-1.jpg"
-          alt="Madeira villa exterior"
+          alt="Historic Madeiran villa exterior — wellness retreat Madeira"
           fill
           sizes="100vw"
           className="object-cover transition-transform duration-500 group-hover:scale-115"
@@ -130,8 +130,8 @@ export function CharmSection() {
           "You'll have full access to the kitchen, so everyone can enjoy preparing their own meals at the villa.",
         ]}
         assets={[
-          { src: "/images/charm/charm-2.jpg", type: "image", alt: "Villa living room" },
-          { src: "/images/charm/charm-3.jpg", type: "image", alt: "Villa terrace view" },
+          { src: "/images/charm/charm-2.jpg", type: "image", alt: "Traditional Madeiran manor living room — sport retreat Madeira" },
+          { src: "/images/charm/charm-3.jpg", type: "image", alt: "Villa terrace with ocean view — Madeira retreat experience" },
         ]}
       />
 
@@ -148,13 +148,13 @@ export function CharmSection() {
           {
             src: "https://www.youtube.com/embed/aoA2YxF7SRY?autoplay=1&rel=0&modestbranding=1",
             type: "youtube",
-            alt: "Villa ambiance",
+            alt: "Villa ambiance — wellness retreat Madeira",
             cover: "https://img.youtube.com/vi/aoA2YxF7SRY/hqdefault.jpg",
           },
           {
             src: "https://www.youtube.com/embed/Ey74N8zjMDA?autoplay=1&rel=0&modestbranding=1",
             type: "youtube",
-            alt: "Cat at the villa",
+            alt: "Resident cats at the Madeira retreat villa",
             cover: "https://img.youtube.com/vi/Ey74N8zjMDA/hqdefault.jpg",
           },
         ]}
@@ -173,9 +173,9 @@ export function CharmSection() {
         </p>
         <div className="flex flex-col md:flex-row gap-4 md:gap-7.5 w-full">
           {[
-            { src: "/images/charm/charm-6.jpg", alt: "Two women by the pool" },
-            { src: "/images/charm/charm-7.jpg", alt: "Villa swimming pool" },
-            { src: "/images/charm/charm-8.jpg", alt: "Aerial view of villa and pool" },
+            { src: "/images/charm/charm-6.jpg", alt: "Pole dancers relaxing by the pool — active holidays Portugal" },
+            { src: "/images/charm/charm-7.jpg", alt: "Outdoor swimming pool at the Madeira retreat villa" },
+            { src: "/images/charm/charm-8.jpg", alt: "Aerial view of Madeira Creative Village pool and estate" },
           ].map((img) => (
             <div
               key={img.alt}
@@ -203,8 +203,8 @@ export function CharmSection() {
           "As the price is per room rather than per person, it offers excellent value for those wishing to share. You can choose your preferred room type during the final step of registration.",
         ]}
         assets={[
-          { src: "/images/charm/charm-9.jpg", type: "image", alt: "Double room with beds" },
-          { src: "/images/charm/charm-10.png", type: "image", alt: "Room interior detail" },
+          { src: "/images/charm/charm-9.jpg", type: "image", alt: "Private double room at Madeira pole dance retreat" },
+          { src: "/images/charm/charm-10.png", type: "image", alt: "Bedroom interior at Madeira Creative Village" },
         ]}
       />
     </section>
