@@ -68,10 +68,10 @@ export function FoodSection() {
         {gridImages.map((img) => (
           <div
             key={img.alt}
-            className="relative rounded-2xl overflow-hidden"
+            className="relative rounded-2xl overflow-hidden group"
             style={{ height: 180 }}
           >
-            <Image src={img.src} alt={img.alt} fill sizes="50vw" className="object-cover" />
+            <Image src={img.src} alt={img.alt} fill sizes="50vw" className="object-cover transition-transform duration-500 group-hover:scale-115" />
           </div>
         ))}
       </div>
@@ -86,7 +86,7 @@ export function FoodSection() {
       >
         {/* Image 1 : C1, L1-L2 */}
         <div
-          className="relative rounded-2xl overflow-hidden"
+          className="relative rounded-2xl overflow-hidden group"
           style={{ gridColumn: "1", gridRow: "1 / 3" }}
         >
           <Image
@@ -94,12 +94,12 @@ export function FoodSection() {
             alt={gridImages[0].alt}
             fill
             sizes="(max-width: 1280px) 27vw, 324px"
-            className="object-cover object-center"
+            className="object-cover object-center transition-transform duration-500 group-hover:scale-115"
           />
         </div>
         {/* Image 2 : C2, L1 */}
         <div
-          className="relative rounded-2xl overflow-hidden"
+          className="relative rounded-2xl overflow-hidden group"
           style={{ gridColumn: "2", gridRow: "1" }}
         >
           <Image
@@ -107,12 +107,12 @@ export function FoodSection() {
             alt={gridImages[1].alt}
             fill
             sizes="22vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-115"
           />
         </div>
         {/* Image 3 : C2, L2 */}
         <div
-          className="relative rounded-2xl overflow-hidden"
+          className="relative rounded-2xl overflow-hidden group"
           style={{ gridColumn: "2", gridRow: "2" }}
         >
           <Image
@@ -120,12 +120,12 @@ export function FoodSection() {
             alt={gridImages[2].alt}
             fill
             sizes="22vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-115"
           />
         </div>
         {/* Image 4 : C1, L3 */}
         <div
-          className="relative rounded-2xl overflow-hidden"
+          className="relative rounded-2xl overflow-hidden group"
           style={{ gridColumn: "1", gridRow: "3" }}
         >
           <Image
@@ -133,12 +133,12 @@ export function FoodSection() {
             alt={gridImages[3].alt}
             fill
             sizes="27vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-115"
           />
         </div>
         {/* Image 5 : C2, L3 */}
         <div
-          className="relative rounded-2xl overflow-hidden"
+          className="relative rounded-2xl overflow-hidden group"
           style={{ gridColumn: "2", gridRow: "3" }}
         >
           <Image
@@ -146,7 +146,7 @@ export function FoodSection() {
             alt={gridImages[4].alt}
             fill
             sizes="22vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-115"
           />
         </div>
       </div>
