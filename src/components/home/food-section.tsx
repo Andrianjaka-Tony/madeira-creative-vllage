@@ -22,8 +22,8 @@ const gridImages = [
 
 export function FoodSection() {
   return (
-    <section className="bg-white flex flex-col lg:flex-row items-start gap-7.5 px-6 md:px-20 xl:px-44 py-16 md:py-24">
-      <div className="w-full lg:w-1/2 flex flex-col">
+    <section className="bg-white flex flex-col lg:grid lg:grid-cols-2 items-center gap-7.5 px-6 md:px-20 xl:px-44 py-16 md:py-24">
+      <div className="w-full flex flex-col">
         <SectionBadge label="Food" />
         <h2 className="mt-6 serif font-bold text-4xl md:text-5xl lg:text-6xl text-(--green) leading-[1.05] tracking-tighter mb-6">
           Meals &amp; Dining
@@ -66,21 +66,25 @@ export function FoodSection() {
       {/* Mobile image grid */}
       <div className="lg:hidden grid grid-cols-2 gap-3 w-full">
         {gridImages.map((img) => (
-          <div key={img.alt} className="relative rounded-2xl overflow-hidden" style={{ height: 180 }}>
+          <div
+            key={img.alt}
+            className="relative rounded-2xl overflow-hidden"
+            style={{ height: 180 }}
+          >
             <Image src={img.src} alt={img.alt} fill sizes="50vw" className="object-cover" />
           </div>
         ))}
       </div>
 
       <div
-        className="hidden lg:grid w-full lg:w-1/2 ml-auto scale-80 translate-x-1/8 translate-y-4"
+        className="hidden lg:grid w-full ml-auto translate-x-1/8 translate-y-4"
         style={{
-          gridTemplateColumns: "minmax(0, 324px) minmax(0, 271px)",
-          gridTemplateRows: "350px 206px 225px",
-          gap: "24px",
+          gridTemplateColumns: "55% 45%",
+          gridTemplateRows: "21vw 13vw 14vw",
+          gap: "16px",
         }}
       >
-        {/* Image 1 : C1-C2, L1-L2 */}
+        {/* Image 1 : C1, L1-L2 */}
         <div
           className="relative rounded-2xl overflow-hidden"
           style={{ gridColumn: "1", gridRow: "1 / 3" }}
@@ -89,11 +93,11 @@ export function FoodSection() {
             src={gridImages[0].src}
             alt={gridImages[0].alt}
             fill
-            sizes="(max-width: 1280px) 40vw, 324px"
-            className="object-cover"
+            sizes="(max-width: 1280px) 27vw, 324px"
+            className="object-cover object-center"
           />
         </div>
-        {/* Image 2 : C3, L1 */}
+        {/* Image 2 : C2, L1 */}
         <div
           className="relative rounded-2xl overflow-hidden"
           style={{ gridColumn: "2", gridRow: "1" }}
@@ -102,11 +106,11 @@ export function FoodSection() {
             src={gridImages[1].src}
             alt={gridImages[1].alt}
             fill
-            sizes="(max-width: 1280px) 25vw, 271px"
+            sizes="22vw"
             className="object-cover"
           />
         </div>
-        {/* Image 3 : C3, L2 */}
+        {/* Image 3 : C2, L2 */}
         <div
           className="relative rounded-2xl overflow-hidden"
           style={{ gridColumn: "2", gridRow: "2" }}
@@ -115,11 +119,11 @@ export function FoodSection() {
             src={gridImages[2].src}
             alt={gridImages[2].alt}
             fill
-            sizes="(max-width: 1280px) 25vw, 271px"
+            sizes="22vw"
             className="object-cover"
           />
         </div>
-        {/* Image 4 : C1-C2, L3 */}
+        {/* Image 4 : C1, L3 */}
         <div
           className="relative rounded-2xl overflow-hidden"
           style={{ gridColumn: "1", gridRow: "3" }}
@@ -128,11 +132,11 @@ export function FoodSection() {
             src={gridImages[3].src}
             alt={gridImages[3].alt}
             fill
-            sizes="(max-width: 1280px) 40vw, 324px"
+            sizes="27vw"
             className="object-cover"
           />
         </div>
-        {/* Image 5 : C3, L3 */}
+        {/* Image 5 : C2, L3 */}
         <div
           className="relative rounded-2xl overflow-hidden"
           style={{ gridColumn: "2", gridRow: "3" }}
@@ -141,7 +145,7 @@ export function FoodSection() {
             src={gridImages[4].src}
             alt={gridImages[4].alt}
             fill
-            sizes="(max-width: 1280px) 25vw, 271px"
+            sizes="22vw"
             className="object-cover"
           />
         </div>
