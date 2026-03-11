@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { Play } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 
-type CharmAsset = { src: string; type: "image" | "video"; alt: string };
+type CharmAsset = { src: string; type: "image" | "video" | "youtube"; alt: string; cover?: string };
 
 type CharmFeatureProps = {
   title: string;
@@ -10,22 +14,46 @@ type CharmFeatureProps = {
   reverse?: boolean;
 };
 
+function YoutubeAsset({ src, cover, alt }: { src: string; cover?: string; alt: string }) {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <div className="relative flex-1 rounded-3xl overflow-hidden aspect-9/16">
+      <button
+        onClick={() => setPlaying(true)}
+        className={`absolute inset-0 w-full h-full group cursor-pointer transition-opacity duration-500 ${playing ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+      >
+        {cover && <Image src={cover} alt={alt} fill sizes="(max-width: 1024px) 45vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-115" />}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-14 h-14 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/35 transition-colors">
+            <Play size={20} className="text-white ml-0.5" />
+          </div>
+        </div>
+      </button>
+      {playing && (
+        <iframe
+          src={src}
+          title={alt}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full animate-[fadeIn_0.5s_ease]"
+        />
+      )}
+    </div>
+  );
+}
+
 function AssetBlock({ asset }: { asset: CharmAsset }) {
-  if (asset.type === "video") {
-    return (
-      <div className="flex-1 rounded-3xl overflow-hidden aspect-square lg:aspect-auto lg:h-[352px]">
-        <video src={asset.src} controls playsInline className="w-full h-full object-cover" />
-      </div>
-    );
+  if (asset.type === "youtube") {
+    return <YoutubeAsset src={asset.src} cover={asset.cover} alt={asset.alt} />;
   }
   return (
-    <div className="relative flex-1 rounded-3xl overflow-hidden aspect-square lg:aspect-auto lg:h-[352px]">
+    <div className="relative flex-1 rounded-3xl overflow-hidden aspect-square lg:aspect-auto lg:h-[352px] group">
       <Image
         src={asset.src}
         alt={asset.alt}
         fill
         sizes="(max-width: 1024px) 45vw, 25vw"
-        className="object-cover"
+        className="object-cover transition-transform duration-500 group-hover:scale-115"
       />
     </div>
   );
@@ -73,13 +101,13 @@ export function CharmSection() {
       </div>
 
       {/* Cover */}
-      <div className="relative rounded-3xl overflow-hidden w-full h-48 md:h-80 lg:h-120">
+      <div className="relative rounded-3xl overflow-hidden w-full h-48 md:h-80 lg:h-120 group">
         <Image
           src="/images/charm/charm-1.jpg"
           alt="Madeira villa exterior"
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-115"
         />
       </div>
 
@@ -107,8 +135,8 @@ export function CharmSection() {
           "The villa is home to several resident cats who are a charming addition for animal and nature lovers. These friendly companions love to socialize and spend time with guests, adding to the warm, natural atmosphere. Please note: If you have a cat allergy, this may not be the ideal location for your stay.",
         ]}
         assets={[
-          { src: "/images/charm/charm-4.mov", type: "video", alt: "Villa ambiance" },
-          { src: "/images/charm/charm-5.mov", type: "video", alt: "Cat at the villa" },
+          { src: "https://www.youtube.com/embed/aoA2YxF7SRY?autoplay=1&rel=0&modestbranding=1", type: "youtube", alt: "Villa ambiance", cover: "https://img.youtube.com/vi/aoA2YxF7SRY/hqdefault.jpg" },
+          { src: "https://www.youtube.com/embed/Ey74N8zjMDA?autoplay=1&rel=0&modestbranding=1", type: "youtube", alt: "Cat at the villa", cover: "https://img.youtube.com/vi/Ey74N8zjMDA/hqdefault.jpg" },
         ]}
       />
 
@@ -131,9 +159,9 @@ export function CharmSection() {
           ].map((img) => (
             <div
               key={img.alt}
-              className="relative flex-1 rounded-3xl overflow-hidden aspect-[3/2] md:aspect-auto md:h-72.5"
+              className="relative flex-1 rounded-3xl overflow-hidden aspect-[3/2] md:aspect-auto md:h-72.5 group"
             >
-              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 90vw, 33vw" className="object-cover" />
+              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 90vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-115" />
             </div>
           ))}
         </div>
