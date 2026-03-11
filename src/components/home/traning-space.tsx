@@ -21,9 +21,9 @@ const highlights = [
 ];
 
 const galleryImages = [
-  "/images/training/training-2.jpg",
-  "/images/training/training-3.jpg",
-  "/images/training/training-4.jpg",
+  { src: "/images/training/training-2.jpg", alt: "Pole dance training session at Madeira retreat" },
+  { src: "/images/training/training-3.jpg", alt: "Indoor pole fitness class at Madeira Creative Village" },
+  { src: "/images/training/training-4.jpg", alt: "Pole camp training space — sport retreat Madeira" },
 ];
 
 export function TrainingSpace() {
@@ -57,7 +57,7 @@ function TrainingBlock() {
       <div className="relative w-full lg:flex-none lg:w-[45%] aspect-12/10 lg:aspect-auto rounded-3xl overflow-hidden group">
         <Image
           src="/images/training/training-1.jpg"
-          alt="Training villa"
+          alt="Pole training studio with French windows at Madeira Creative Village"
           fill
           sizes="45vw"
           className="object-cover transition-transform duration-500 group-hover:scale-115"
@@ -111,11 +111,11 @@ function HighlightItem({ icon: Icon, label, description }: HighlightItemProps) {
 function PhotoGallery() {
   return (
     <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-      {galleryImages.map((src, i) => (
+      {galleryImages.map((img, i) => (
         <div key={i} className="relative aspect-3/4 rounded-3xl overflow-hidden group">
           <Image
-            src={src}
-            alt={`Gallery ${i + 1}`}
+            src={img.src}
+            alt={img.alt}
             fill
             sizes="33vw"
             className="object-cover object-bottom transition-transform duration-500 group-hover:scale-115"

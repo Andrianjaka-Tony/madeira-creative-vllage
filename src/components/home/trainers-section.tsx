@@ -50,7 +50,7 @@ function TrainerVideo({ trainer }: { trainer: Trainer }) {
       >
         <Image
           src={trainer.coverSrc}
-          alt={trainer.name}
+          alt={`${trainer.name} — pole dance trainer at Madeira retreat`}
           fill
           sizes="(max-width: 1280px) 240px, 320px"
           className="object-cover transition-transform duration-500 group-hover:scale-115"
