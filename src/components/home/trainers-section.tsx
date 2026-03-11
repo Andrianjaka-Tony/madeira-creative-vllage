@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { Instagram, Play } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 
@@ -21,7 +24,7 @@ const trainers: Trainer[] = [
     instagram: "@miglena.thepoledancer",
     instagramUrl: "https://www.instagram.com/miglena.thepoledancer/",
     coverSrc: "/images/trainer/trainer-1.jpg",
-    youtubeUrl: "https://youtube.com/shorts/ZEY2TwtPD6k?si=meoDdTToDpwfO4fK",
+    youtubeUrl: "https://www.youtube.com/embed/ZEY2TwtPD6k?autoplay=1&rel=0&modestbranding=1",
   },
   {
     name: "VEROLINA",
@@ -31,9 +34,49 @@ const trainers: Trainer[] = [
     instagram: "@verolina.pole",
     instagramUrl: "https://www.instagram.com/madeiracreativevillage/",
     coverSrc: "/images/trainer/trainer-2.png",
-    youtubeUrl: "https://www.youtube.com/watch?v=HDHDfb1qVcQ",
+    youtubeUrl: "https://www.youtube.com/embed/HDHDfb1qVcQ?autoplay=1&rel=0&modestbranding=1",
   },
 ];
+
+function TrainerVideo({ trainer }: { trainer: Trainer }) {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <div
+      className="w-full md:flex-none md:w-60 xl:w-80 rounded-3xl overflow-hidden relative"
+      style={{ height: 450 }}
+    >
+      {/* Cover — fade out on play */}
+      <button
+        onClick={() => setPlaying(true)}
+        className={`absolute inset-0 w-full h-full group cursor-pointer transition-opacity duration-500 ${playing ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+      >
+        <Image
+          src={trainer.coverSrc}
+          alt={trainer.name}
+          fill
+          sizes="(max-width: 1280px) 240px, 320px"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-14 h-14 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/35 transition-colors">
+            <Play size={20} className="text-white ml-0.5" />
+          </div>
+        </div>
+      </button>
+      {/* iframe — mounted only on play, fades in */}
+      {playing && (
+        <iframe
+          src={trainer.youtubeUrl}
+          title={trainer.name}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full animate-[fadeIn_0.5s_ease]"
+        />
+      )}
+    </div>
+  );
+}
 
 function TrainerColumn({ trainer }: { trainer: Trainer }) {
   return (
@@ -62,27 +105,7 @@ function TrainerColumn({ trainer }: { trainer: Trainer }) {
           )}
         </div>
       </div>
-      {/* Cover image linking to YouTube */}
-      <a
-        href={trainer.youtubeUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative w-full md:flex-none md:w-60 xl:w-80 rounded-3xl overflow-hidden group"
-        style={{ height: 450 }}
-      >
-        <Image
-          src={trainer.coverSrc}
-          alt={trainer.name}
-          fill
-          sizes="(max-width: 1280px) 240px, 320px"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-14 h-14 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/35 transition-colors">
-            <Play size={20} className="text-white ml-0.5" />
-          </div>
-        </div>
-      </a>
+      <TrainerVideo trainer={trainer} />
     </div>
   );
 }
