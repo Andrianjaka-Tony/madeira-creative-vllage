@@ -84,13 +84,13 @@ function FeatureCard({ title, description }: FeatureCardProps) {
 
 function SideImage() {
   return (
-    <div className="w-full lg:flex-none lg:w-96 xl:w-125 aspect-3/4 rounded-3xl overflow-hidden group">
+    <div className="w-full lg:flex-none lg:w-96 xl:w-125 aspect-3/4 rounded-3xl overflow-hidden">
       <video
         src="/images/7-days-video.mov"
         poster="/images/7-days-cover.JPG"
         controls
         playsInline
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-115"
+        className="w-full h-full object-cover"
       />
     </div>
   );

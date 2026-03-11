@@ -4,7 +4,7 @@ const FORM_URL = "https://forms.gle/RKq6z77pzecVbxxT9";
 
 export function StickyBookBar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-[#e5e5e5] px-4 py-3 flex items-center justify-between gap-4">
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-[#e5e5e5] px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] flex items-center justify-between gap-4">
       <div>
         <p className="text-[11px] text-[#888] uppercase tracking-widest">From</p>
         <p className="font-[family-name:var(--font-playfair)] text-[#1a1a1a] text-[20px] font-bold leading-none">

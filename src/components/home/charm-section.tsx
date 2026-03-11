@@ -17,12 +17,20 @@ type CharmFeatureProps = {
 function YoutubeAsset({ src, cover, alt }: { src: string; cover?: string; alt: string }) {
   const [playing, setPlaying] = useState(false);
   return (
-    <div className="relative flex-1 rounded-3xl overflow-hidden aspect-9/16">
+    <div className="relative flex-1 rounded-3xl overflow-hidden aspect-square">
       <button
         onClick={() => setPlaying(true)}
         className={`absolute inset-0 w-full h-full group cursor-pointer transition-opacity duration-500 ${playing ? "opacity-0 pointer-events-none" : "opacity-100"}`}
       >
-        {cover && <Image src={cover} alt={alt} fill sizes="(max-width: 1024px) 45vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-115" />}
+        {cover && (
+          <Image
+            src={cover}
+            alt={alt}
+            fill
+            sizes="(max-width: 1024px) 45vw, 25vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-115"
+          />
+        )}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-14 h-14 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/35 transition-colors">
             <Play size={20} className="text-white ml-0.5" />
@@ -82,7 +90,9 @@ function CharmFeature({ title, paragraphs, assets, reverse = false }: CharmFeatu
   );
 
   return (
-    <div className={`flex flex-col lg:flex-row items-start gap-7.5 ${reverse ? "lg:flex-row-reverse" : ""}`}>
+    <div
+      className={`flex flex-col lg:flex-row items-start gap-7.5 ${reverse ? "lg:flex-row-reverse" : ""}`}
+    >
       {textBlock}
       {assetsBlock}
     </div>
@@ -135,8 +145,18 @@ export function CharmSection() {
           "The villa is home to several resident cats who are a charming addition for animal and nature lovers. These friendly companions love to socialize and spend time with guests, adding to the warm, natural atmosphere. Please note: If you have a cat allergy, this may not be the ideal location for your stay.",
         ]}
         assets={[
-          { src: "https://www.youtube.com/embed/aoA2YxF7SRY?autoplay=1&rel=0&modestbranding=1", type: "youtube", alt: "Villa ambiance", cover: "https://img.youtube.com/vi/aoA2YxF7SRY/hqdefault.jpg" },
-          { src: "https://www.youtube.com/embed/Ey74N8zjMDA?autoplay=1&rel=0&modestbranding=1", type: "youtube", alt: "Cat at the villa", cover: "https://img.youtube.com/vi/Ey74N8zjMDA/hqdefault.jpg" },
+          {
+            src: "https://www.youtube.com/embed/aoA2YxF7SRY?autoplay=1&rel=0&modestbranding=1",
+            type: "youtube",
+            alt: "Villa ambiance",
+            cover: "https://img.youtube.com/vi/aoA2YxF7SRY/hqdefault.jpg",
+          },
+          {
+            src: "https://www.youtube.com/embed/Ey74N8zjMDA?autoplay=1&rel=0&modestbranding=1",
+            type: "youtube",
+            alt: "Cat at the villa",
+            cover: "https://img.youtube.com/vi/Ey74N8zjMDA/hqdefault.jpg",
+          },
         ]}
       />
 
@@ -161,7 +181,13 @@ export function CharmSection() {
               key={img.alt}
               className="relative flex-1 rounded-3xl overflow-hidden aspect-[3/2] md:aspect-auto md:h-72.5 group"
             >
-              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 90vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-115" />
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 768px) 90vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-115"
+              />
             </div>
           ))}
         </div>

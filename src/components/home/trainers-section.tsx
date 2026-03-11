@@ -31,7 +31,7 @@ const trainers: Trainer[] = [
     role: "Organizer & Spinning Combos",
     description:
       "Based in Madeira, leading the retreat with dynamic spinning combinations and seamless flow. Verolina brings structure and energy, balancing challenge with care.",
-    instagram: "@verolina.pole",
+    instagram: "@madeiracreativevillage",
     instagramUrl: "https://www.instagram.com/madeiracreativevillage/",
     coverSrc: "/images/trainer/trainer-2.png",
     youtubeUrl: "https://www.youtube.com/embed/HDHDfb1qVcQ?autoplay=1&rel=0&modestbranding=1",
@@ -42,9 +42,7 @@ function TrainerVideo({ trainer }: { trainer: Trainer }) {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <div
-      className="w-full md:flex-none md:w-60 xl:w-80 rounded-3xl overflow-hidden relative aspect-9/16"
-    >
+    <div className="w-full md:flex-none md:w-60 xl:w-80 rounded-3xl overflow-hidden relative aspect-10/14">
       {/* Cover — fade out on play */}
       <button
         onClick={() => setPlaying(true)}

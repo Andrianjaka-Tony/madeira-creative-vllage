@@ -24,7 +24,7 @@ export function HomeView() {
     <Fragment>
       <Navbar />
       <StickyBookBar />
-      <div className="pb-20 md:pb-0">
+      <div className="pb-24 md:pb-0">
       <Hero />
       <SevenDaySection />
       <ExploreSection />
