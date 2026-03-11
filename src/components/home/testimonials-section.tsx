@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { Play } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 
@@ -7,25 +10,25 @@ const testimonials = [
     id: 1,
     image: "/images/testimonial/testimonial-1.jpg",
     gridArea: "a",
-    link: "https://www.instagram.com/reel/DJpakBmuurC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-  }, // Tall left (2x2)
+    youtubeId: "yXLks6FKaOQ",
+  },
   {
     id: 2,
     image: "/images/testimonial/testimonial-2.jpg",
     gridArea: "b",
-    link: "https://www.instagram.com/reel/DJ8stC9IdML/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    youtubeId: "vfIz-4QnTJ8",
     objectPosition: "center top",
-  }, // Small top
-  { id: 3, image: "/images/testimonial/testimonial-3.jpeg", gridArea: "c", link: "" }, // Wide top (2 cols)
-  { id: 4, image: "/images/testimonial/testimonial-4.jpg", gridArea: "d", link: "" }, // Medium top right
-  { id: 5, image: "/images/testimonial/testimonial-5.jpeg", gridArea: "e", link: "" }, // Wide bottom (2 cols)
+  },
+  { id: 3, image: "/images/testimonial/testimonial-3.jpeg", gridArea: "c" },
+  { id: 4, image: "/images/testimonial/testimonial-4.jpg", gridArea: "d" },
+  { id: 5, image: "/images/testimonial/testimonial-5.jpeg", gridArea: "e" },
   {
     id: 6,
     image: "/images/testimonial/testimonial-6.png",
     gridArea: "f",
-    link: "https://www.instagram.com/reel/DALuABzo-dv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-  }, // Small bottom
-  { id: 7, image: "/images/testimonial/testimonial-7.png", gridArea: "g", link: "" }, // Medium bottom right
+    youtubeId: "8271ngAoTAg",
+  },
+  { id: 7, image: "/images/testimonial/testimonial-7.png", gridArea: "g" },
 ];
 
 interface TestimonialCardProps {
@@ -35,36 +38,44 @@ interface TestimonialCardProps {
 }
 
 const TestimonialCard = ({ item, className, style }: TestimonialCardProps) => {
+  const [playing, setPlaying] = useState(false);
   const imageStyle = item.objectPosition ? { objectPosition: item.objectPosition } : undefined;
 
-  if (item.link) {
+  if (item.youtubeId) {
     return (
-      <a
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${className} group transition-transform duration-300 ease-out hover:scale-[1.02]`}
-        style={style}
-      >
-        <Image
-          src={item.image}
-          alt={`Testimonial ${item.id}`}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-115"
-          style={imageStyle}
-        />
-        {/* Play button overlay */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110">
-            <Play size={26} color="#374151" />
+      <div className={`${className} group`} style={style}>
+        <button
+          onClick={() => setPlaying(true)}
+          className={`absolute inset-0 w-full h-full cursor-pointer transition-opacity duration-500 ${playing ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        >
+          <Image
+            src={item.image}
+            alt={`Testimonial ${item.id}`}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-115"
+            style={imageStyle}
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110">
+              <Play size={20} color="#374151" className="ml-0.5" />
+            </div>
           </div>
-        </div>
-      </a>
+        </button>
+        {playing && (
+          <iframe
+            src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+            title={`Testimonial ${item.id}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full animate-[fadeIn_0.5s_ease]"
+          />
+        )}
+      </div>
     );
   }
 
   return (
-    <div className={className} style={style}>
+    <div className={`${className} group`} style={style}>
       <Image
         src={item.image}
         alt={`Testimonial ${item.id}`}
@@ -111,7 +122,7 @@ export default function Testimonials({
                     src="/images/testimonial/testimonial-1.jpg"
                     alt="Ana G."
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-115"
+                    className="object-cover"
                   />
                 </div>
                 <div>
