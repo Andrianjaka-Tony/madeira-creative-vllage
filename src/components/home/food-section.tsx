@@ -13,11 +13,11 @@ const buffetItems = [
 ];
 
 const gridImages = [
-  { src: "/images/meal/meal-1.jpg", alt: "Dinner table with guests" },
-  { src: "/images/meal/meal-2.jpg", alt: "Outdoor picnic setup" },
-  { src: "/images/meal/meal-3.jpg", alt: "Buffet spread" },
-  { src: "/images/meal/meal-4.jpg", alt: "Community dinner" },
-  { src: "/images/meal/meal-5.png", alt: "Honesty bar" },
+  { src: "/images/meal/meal-1.jpg", alt: "Group community dinner at Madeira pole dance retreat" },
+  { src: "/images/meal/meal-2.jpg", alt: "Outdoor picnic with retreat guests in Madeira" },
+  { src: "/images/meal/meal-3.jpg", alt: "Continental buffet breakfast at Madeira wellness retreat" },
+  { src: "/images/meal/meal-4.jpg", alt: "Farm-to-table dining experience at Madeira retreat" },
+  { src: "/images/meal/meal-5.png", alt: "Honesty bar at Madeira Creative Village" },
 ];
 
 export function FoodSection() {

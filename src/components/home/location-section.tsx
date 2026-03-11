@@ -6,10 +6,10 @@ import { SectionBadge } from "@/components/ui/section-badge";
 import { ImageLightbox } from "@/components/ui/image-lightbox";
 
 const stayImages = [
-  { src: "/images/stay/stay-1.jpeg", alt: "Ponta do Sol coastline" },
-  { src: "/images/stay/stay-2.png", alt: "Village view" },
-  { src: "/images/stay/stay-3.png", alt: "Madeira landscape" },
-  { src: "/images/stay/stay-4.jpeg", alt: "Anjos Waterfall" },
+  { src: "/images/stay/stay-1.jpeg", alt: "Ponta do Sol coastline — Madeira retreat location" },
+  { src: "/images/stay/stay-2.png", alt: "Ponta do Sol village view — active holidays Portugal" },
+  { src: "/images/stay/stay-3.png", alt: "Lush Madeira island landscape near the retreat" },
+  { src: "/images/stay/stay-4.jpeg", alt: "Anjos Waterfall — adventure and wellness retreat Madeira" },
 ];
 
 const PREVIEW_COUNT = 2;

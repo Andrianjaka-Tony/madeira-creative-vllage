@@ -9,10 +9,10 @@ const notIncluded = [
 ];
 
 const gridImages = [
-  { src: "/images/travel/travel-1.jpeg", alt: "Women by the pool" },
-  { src: "/images/travel/travel-2.jpg", alt: "Villa exterior" },
-  { src: "/images/travel/travel-3.jpg", alt: "Aerial villa view" },
-  { src: "/images/stay/stay-2.png", alt: "Madeira coastline" },
+  { src: "/images/travel/travel-1.jpeg", alt: "Pole dancers by the pool at Madeira fitness holiday" },
+  { src: "/images/travel/travel-2.jpg", alt: "Madeira Creative Village villa exterior" },
+  { src: "/images/travel/travel-3.jpg", alt: "Aerial view of pole dance retreat villa in Madeira" },
+  { src: "/images/stay/stay-2.png", alt: "Ponta do Sol coastline — sport retreat Madeira" },
 ];
 
 export function TravelSection() {
