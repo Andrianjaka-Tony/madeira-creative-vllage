@@ -67,7 +67,7 @@ export function BookSpotSection() {
               src="/images/book.jpg"
               alt="Pole Retreat Madeira"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-115"
             />
             {/* Green gradient from bottom */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#1a3328cc] via-[#1a332844] to-transparent" />

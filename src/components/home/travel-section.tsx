@@ -81,13 +81,13 @@ export function TravelSection() {
         {/* 2×2 image grid */}
         <div className="grid grid-cols-2 gap-3">
           {gridImages.map((img) => (
-            <div key={img.alt} className="relative rounded-2xl overflow-hidden" style={{ height: 140 }}>
+            <div key={img.alt} className="relative rounded-2xl overflow-hidden group" style={{ height: 140 }}>
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
                 sizes="(max-width: 768px) 50vw, 200px"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-115"
               />
             </div>
           ))}

@@ -29,7 +29,7 @@ export function LocationSection() {
       <section className="bg-(--beige) grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-7.5 px-6 md:px-20 xl:px-44 py-16 md:py-24">
         {/* Image gauche */}
         <div
-          className="relative rounded-3xl overflow-hidden cursor-pointer h-80 lg:h-128"
+          className="relative rounded-3xl overflow-hidden cursor-pointer h-80 lg:h-128 group"
           onClick={() => setLightboxIndex(0)}
         >
           <Image
@@ -37,7 +37,7 @@ export function LocationSection() {
             alt={stayImages[0].alt}
             fill
             sizes="45vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-115"
           />
         </div>
 
@@ -57,7 +57,7 @@ export function LocationSection() {
           {/* 2 petites images */}
           <div className="mt-4 lg:mt-auto flex gap-4 lg:gap-7.5">
             <div
-              className="relative flex-1 rounded-2xl overflow-hidden cursor-pointer"
+              className="relative flex-1 rounded-2xl overflow-hidden cursor-pointer group"
               style={{ height: 180 }}
               onClick={() => setLightboxIndex(1)}
             >
@@ -66,11 +66,11 @@ export function LocationSection() {
                 alt={stayImages[1].alt}
                 fill
                 sizes="(max-width: 1024px) 45vw, 295px"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-115"
               />
             </div>
             <div
-              className="relative flex-1 rounded-2xl overflow-hidden cursor-pointer"
+              className="relative flex-1 rounded-2xl overflow-hidden cursor-pointer group"
               style={{ height: 180 }}
               onClick={() => setLightboxIndex(PREVIEW_COUNT)}
             >
@@ -79,7 +79,7 @@ export function LocationSection() {
                 alt={stayImages[2].alt}
                 fill
                 sizes="(max-width: 1024px) 45vw, 295px"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-115"
               />
               {stayImages.length > PREVIEW_COUNT + 1 && (
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
