@@ -219,8 +219,8 @@ export function LineUpSection() {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
-    <section className="relative py-[80px]">
-      <Image src="/images/line-up-2.jpg" alt="" fill className="object-cover" />
+    <section className="relative py-[80px] overflow-hidden bg-stone-100">
+      <Image src="/images/line-up-3.jpg" alt="" fill className="object-cover object-top" />
       <div className="absolute inset-0 bg-white/20" />
 
       <div className="relative px-6 md:px-20 xl:px-36.5">

@@ -50,7 +50,7 @@ const TestimonialCard = ({ item, className, style }: TestimonialCardProps) => {
           src={item.image}
           alt={`Testimonial ${item.id}`}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-115"
           style={imageStyle}
         />
         {/* Play button overlay */}
@@ -69,7 +69,7 @@ const TestimonialCard = ({ item, className, style }: TestimonialCardProps) => {
         src={item.image}
         alt={`Testimonial ${item.id}`}
         fill
-        className="object-cover"
+        className="object-cover transition-transform duration-500 group-hover:scale-115"
         style={imageStyle}
       />
     </div>
@@ -111,7 +111,7 @@ export default function Testimonials({
                     src="/images/testimonial/testimonial-1.jpg"
                     alt="Ana G."
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-115"
                   />
                 </div>
                 <div>

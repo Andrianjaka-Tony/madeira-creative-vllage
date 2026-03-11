@@ -43,8 +43,7 @@ function TrainerVideo({ trainer }: { trainer: Trainer }) {
 
   return (
     <div
-      className="w-full md:flex-none md:w-60 xl:w-80 rounded-3xl overflow-hidden relative"
-      style={{ height: 450 }}
+      className="w-full md:flex-none md:w-60 xl:w-80 rounded-3xl overflow-hidden relative aspect-9/16"
     >
       {/* Cover — fade out on play */}
       <button
@@ -56,7 +55,7 @@ function TrainerVideo({ trainer }: { trainer: Trainer }) {
           alt={trainer.name}
           fill
           sizes="(max-width: 1280px) 240px, 320px"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-115"
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-14 h-14 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/35 transition-colors">
