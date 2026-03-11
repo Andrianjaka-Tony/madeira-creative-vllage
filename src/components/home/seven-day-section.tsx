@@ -30,7 +30,7 @@ export function SevenDaySection() {
           icon={ArrowRight}
           variant="default"
           className="self-start px-8"
-          href="https://forms.gle/RKq6z77pzecVbxxT9"
+          href="#book"
         />
       </div>
       <SideImage />
