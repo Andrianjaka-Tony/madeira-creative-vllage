@@ -131,7 +131,7 @@ export function CharmSection() {
           ].map((img) => (
             <div
               key={img.alt}
-              className="relative flex-1 rounded-3xl overflow-hidden aspect-square md:aspect-auto md:h-72.5"
+              className="relative flex-1 rounded-3xl overflow-hidden aspect-[3/2] md:aspect-auto md:h-72.5"
             >
               <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 90vw, 33vw" className="object-cover" />
             </div>
