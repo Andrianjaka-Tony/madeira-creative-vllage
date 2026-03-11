@@ -65,7 +65,7 @@ export function BookSpotSection() {
           <div className="relative w-full md:w-2/5 h-70 md:h-175 shrink-0">
             <Image
               src="/images/book.jpg"
-              alt="Pole Retreat Madeira"
+              alt="Pole fitness retreat in Madeira Island, Portugal"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-115"
             />

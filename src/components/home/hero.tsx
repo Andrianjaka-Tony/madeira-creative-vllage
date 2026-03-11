@@ -16,7 +16,7 @@ export function Hero() {
     <div className="relative w-screen flex flex-col items-center justify-center">
       <Image
         src="/images/coverImg.jpg"
-        alt=""
+        alt="Pole dance retreat in Madeira Island, Portugal"
         fill
         priority
         className="absolute object-cover"
