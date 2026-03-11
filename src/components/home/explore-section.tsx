@@ -291,7 +291,7 @@ function ActivityCard({ title, description, assets }: ActivityCardProps) {
   const asset = assets[current];
 
   return (
-    <div className="relative aspect-9/16 rounded-3xl overflow-hidden group">
+    <div className="relative aspect-10/12 rounded-3xl overflow-hidden group">
       {/* Assets */}
       {assets.map((a, i) => (
         <div
