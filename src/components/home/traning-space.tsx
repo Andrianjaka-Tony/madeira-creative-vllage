@@ -53,8 +53,8 @@ function SectionIntro() {
 
 function TrainingBlock() {
   return (
-    <div className="mt-12 md:mt-16 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-      <div className="relative w-full lg:flex-none lg:w-[45%] aspect-12/10 rounded-3xl overflow-hidden">
+    <div className="mt-12 md:mt-16 flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+      <div className="relative w-full lg:flex-none lg:w-[45%] aspect-12/10 lg:aspect-auto rounded-3xl overflow-hidden">
         <Image
           src="/images/training/training-1.jpg"
           alt="Training villa"
@@ -112,8 +112,14 @@ function PhotoGallery() {
   return (
     <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
       {galleryImages.map((src, i) => (
-        <div key={i} className="relative aspect-square rounded-3xl overflow-hidden">
-          <Image src={src} alt={`Gallery ${i + 1}`} fill sizes="33vw" className="object-cover" />
+        <div key={i} className="relative aspect-3/4 rounded-3xl overflow-hidden">
+          <Image
+            src={src}
+            alt={`Gallery ${i + 1}`}
+            fill
+            sizes="33vw"
+            className="object-cover object-bottom"
+          />
         </div>
       ))}
     </div>
